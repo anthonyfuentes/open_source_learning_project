@@ -1,5 +1,6 @@
 
 class Resource < ApplicationRecord
+  
   enum media_types: [:video, :interactive, :reading]
 
   belongs_to :category, optional: true
