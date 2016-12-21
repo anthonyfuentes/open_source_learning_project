@@ -1,0 +1,19 @@
+<%= simple_form_for [@resource, @feedback], html: { class: 'form-horizontal' } do |fb_fields| %>
+<!-- TODO: fix alignment! -->
+  <%= fb_fields.input :difficulty, label: "What's the difficulty level?",
+                                   collection: (1..10),
+                                   as: :radio_buttons,
+                                   item_wrapper_class: 'radio-inline' %>
+
+  <%= fb_fields.input :rating,  label: "How would you rate the overall quality?",
+                                   collection: (1..10),
+                                   as: :radio_buttons,
+                                   item_wrapper_class: 'radio-inline' %>
+
+  <%= fb_fields.input :completion_minutes, label: "How long does it take to complete? (minutes)",
+                                           input_html: { min: '1', step: 'any' } %>
+
+  <%= fb_fields.button :submit, "Submit", class: 'btn btn-success' %>
+
+
+<% end %>
