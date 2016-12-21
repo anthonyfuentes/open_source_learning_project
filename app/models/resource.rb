@@ -15,4 +15,6 @@ class Resource < ApplicationRecord
   has_many :resources_tags
   has_many :tags, through: :resources_tags
 
+  accepts_nested_attributes_for :links, reject_if: :all_blank
+
 end
