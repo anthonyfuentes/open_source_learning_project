@@ -13,6 +13,10 @@ class ResourcesController < ApplicationController
   def show
   end
 
+  def index
+    @resoures = Resouce.all
+  end
+
   private
 
     def successful_create
