@@ -10,6 +10,9 @@
 
   <body>
     <%= render '/shared/nav' %>
-    <%= yield %>
+    <main class="container">
+      <%= render 'layouts/shared/flash' %>
+      <%= yield %>
+    </main>
   </body>
 </html>
