@@ -7,8 +7,8 @@ class FeedbacksController < ApplicationController
 
   def create
     @feedback = @resource.feedbacks.build( resource_params )
-
-    #anthony's ternary
+    @feedback.user_id = current_user.id
+    @feedback.save ? successful_create : failed_create
   end
 
   def edit
@@ -19,12 +19,23 @@ class FeedbacksController < ApplicationController
 
   private
 
+    def successful_create
+      flash[:success] = "Thanks for sharing! <3"
+      redirect_to resources_path
+      # TODO: redirect to user profile showing resources they've submitted
+    end
+
+    def failed_create
+      flash[:danger] = @feedback.errors.full_messages
+      render :new
+    end
+
     def set_resource
       @resource = Resource.find_by_id( params[:resource_id] )
     end
 
     def resource_params
-      params.require(:resource).permit(:difficulty,
+      params.require(:feedback).permit(:difficulty,
                                        :completion_minutes,
                                        :rating)
     end
