@@ -1,0 +1,2 @@
+class CategoriesResource < ApplicationRecord
+end
