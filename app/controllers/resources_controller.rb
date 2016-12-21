@@ -14,7 +14,8 @@ class ResourcesController < ApplicationController
   end
 
   def index
-    @resoures = Resouce.all
+    
+    @resources = Resource.includes(:links, :submitter).all 
   end
 
   private

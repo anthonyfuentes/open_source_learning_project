@@ -28,6 +28,14 @@ NUM.times do
               password:   "foobar123")
 end
 
+User.create(username:   Faker::Internet.user_name,
+              first_name: Faker::Name.first_name,
+              last_name:  Faker::Name.last_name,
+              email:      "foobar123@example.com",
+              password:   "foobar123")
+
+p "Your sample user email is foobar123@example.com and your password is foobar123"
+
 puts "Creating Catagories"
 3.times do
   Category.create( name:  Faker::Company.buzzword)
@@ -43,6 +51,6 @@ NUM.times do
                   subtitle:     Faker::Hacker.say_something_smart,
                   description:  Faker::Lorem.paragraph,
                   media_type:   [0,1,2].sample,
-                  credits:      Faker::Internet.name
+                  credits:      Faker::Internet.username
                   )
 end

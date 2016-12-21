@@ -1,0 +1,14 @@
+
+<% @resources.each do |resource| %>
+  <div class="column">
+    <div class="panel panel-default">
+    <h4><b><%= link_to(resource.title, resource_path(resource.id)) %></b></h4>
+    <br>
+    Credit: <%= resource.credits %><br>
+    Submitted By: <%= resource.submitter.username%>
+    <p><%= resource.subtitle %></p>
+    <br>
+    <%= first_link(resource) %>
+    </div>
+  </div>
+<% end %>
