@@ -1,4 +1,3 @@
-
 class CurriculumsController < ApplicationController
 
   def new
@@ -12,13 +11,15 @@ class CurriculumsController < ApplicationController
 
   private
 
-  def successful_create
-    cookies[:curriculum_id] = @curriculum.id
-    redirect_to resources_path
-  end
+    def successful_create
+      cookies[:curriculum_id] = @curriculum.id
+      redirect_to resources_path
+    end
 
-  def failed_create
-  end
+    def failed_create
+      flash.now[:danger] = @curriculum.errors.full_messages
+      render :new
+    end
 
     def curriculum_params
       params.require(:curriculum).permit(:title, :subtitle,

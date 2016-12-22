@@ -23,8 +23,8 @@
             <p>Score</p>
           </div>
         </div>
-        <% if cookies[:curriculum_id] %>
-            I can see cookies, see: <%= cookies[:curriculum_id] %>
+        <% if curriculum_id = cookies[:curriculum_id] %>
+            <%= curriculum_resource_toggle_link( curriculum_id, resource.id ) %>
         <% end %>
       </div>
 
