@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   root "resources#index"
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    get "shared", to: "shared_resources#index"
+  end
+
   resources :resources, only: [:new, :create, :show, :index] do
     resources :feedbacks, only: [:new, :create]
   end
