@@ -1,12 +1,14 @@
 
-#if Rails.env.development?
-  #puts "Deleting users"
-  #User.destroy_all
-  #puts "Destroying Resources"
-  #Resource.destroy_all
-  #puts "Destroying Catagories"
-  #Category.destroy_all
-#end
+if Rails.env.development?
+  # puts "Deleting Users"
+  # User.destroy_all
+  # puts "Destroying Resources"
+  # Resource.destroy_all
+  # puts "Destroying Catagories"
+  # Category.destroy_all
+  # puts "Destroying Links"
+  # Link.destroy_all
+end
 
 def create_users(n = 10)
   #puts "Creating Users"
@@ -54,7 +56,17 @@ def create_resources(n = 10)
   puts "#{ Resource.count } resources created"
 end
 
+def create_links
+  #puts "Giving links to resources"
+  Resource.all.each do |n|
+    n.links.create(
+      url: Faker::Internet.url
+    )
+  end
+end
+
 create_users
 create_sample_user
 create_categories
 create_resources
+create_links
