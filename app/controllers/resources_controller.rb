@@ -25,7 +25,6 @@ class ResourcesController < ApplicationController
     end
 
     def failed_create
-      flash[:danger] = @resource.errors.full_messages
       render :new
     end
 
