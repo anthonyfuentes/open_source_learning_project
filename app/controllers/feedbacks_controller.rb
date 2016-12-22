@@ -16,7 +16,7 @@ class FeedbacksController < ApplicationController
 
     def successful_create
       flash[:success] = "Thanks for sharing! <3"
-      redirect_to user_shared(current_user)
+      redirect_to user_shared_path(current_user)
     end
 
     def failed_create
