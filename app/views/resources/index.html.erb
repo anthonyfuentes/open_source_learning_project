@@ -16,6 +16,13 @@
 
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
-    <%= render @resources %>
+    <div class="btn-group" role="group">
+      <%= link_to 'Resources', resources_path,
+        class: 'btn btn-default active' %>
+      <%= link_to 'Curriculums', curriculums_path,
+        class: 'btn btn-default' %>
+    </div>
+  <hr>
+  <%= render @resources %>
   </div>
 </div>
