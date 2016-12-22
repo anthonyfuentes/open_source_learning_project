@@ -8,8 +8,7 @@
     <div class="row">
 
       <div class="col-xs-10">
-        <p>Type: <%= @resource.media_type %></p>
-        <!--TODO: displays number atm-->
+        <p>Type: <%= media_type(@resource) %></p>
         <p>Created by <%= @resource.credits %></p>
         <p><%= @resource.description %></p>
       </div>
