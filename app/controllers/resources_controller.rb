@@ -1,3 +1,4 @@
+
 class ResourcesController < ApplicationController
 
   def new
@@ -14,8 +15,7 @@ class ResourcesController < ApplicationController
   end
 
   def index
-    
-    @resources = Resource.includes(:links, :submitter).all 
+    @resources = Resource.includes(:links, :submitter).all
   end
 
   private
@@ -37,7 +37,7 @@ class ResourcesController < ApplicationController
         :media_type,
         :credits,
         :category_id,
-        link_attributes: [:url]
+        links_attributes: [:url]
       )
     end
 
