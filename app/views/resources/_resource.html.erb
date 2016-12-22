@@ -1,8 +1,6 @@
 
 <div class="panel panel-default">
-
   <div class="panel-body">
-
     <div class="row">
 
       <div class="col-xs-8">
@@ -25,10 +23,11 @@
             <p>Score</p>
           </div>
         </div>
+        <% if curriculum_id = cookies[:curriculum_id] %>
+            <%= curriculum_resource_toggle_link( curriculum_id, resource.id ) %>
+        <% end %>
       </div>
 
     </div>
-
   </div>
-
 </div>

@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   end
 
   resources :curriculums, only: [:new, :create, :index, :show]
+
+  resources :curriculums_resources, only: [:create, :destroy]
 end
