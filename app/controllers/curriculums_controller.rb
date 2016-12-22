@@ -17,7 +17,19 @@ class CurriculumsController < ApplicationController
   end
 
   def index
-    @curriculums = Curriculum.paginate(page: params[:page], per_page: 10)
+    if params[:q].nil?
+      @curriculums = Curriculum.paginate(page: params[:page], per_page: 10).includes(:links, :submitter).all
+    else
+      @curriculums = Curriculum.search params[:q]
+      @curriculums = @curriculums.records
+      @curriculums = filter_results(@curriculum)
+      @curriculums = @curriculums.paginate(page: params[:page], per_page: 10)
+      if @curriculum.empty?
+        flash.now[:danger] = "no results"
+        @curriculums = filter_results(Curriculum)
+        @curriculums = @curriculums.paginate(page: params[:page], per_page: 10)
+      end
+    end
   end
 
   private
@@ -36,4 +48,10 @@ class CurriculumsController < ApplicationController
       params.require(:curriculum).permit(:title, :subtitle,
                                          :description)
     end
+
+    def filter_results(result)
+    result = result.where(category_id: params[:category_id].to_i) unless params[:category_id] == ""
+    result = result.joins("FULL JOIN resources_tag ON resources_tag.resource_id = resource.id").where(tag_id: params[:tag_id]) if params[:tag_id] & !params[:tag_id] == ""
+    result = result.all unless !params[:category_id] == ""
+  end
 end
