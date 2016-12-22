@@ -2,10 +2,9 @@ class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
   def attribute_average(attribute)
-    if Feedback.has_attribute?(attribute)
-      Feedback.where("feedbackable_id = #{self.id} and feedbackable_type = '#{self.class.name}'")
-        .average(attribute).to_f
-    end
+    return nil unless Feedback.has_attribute?(attribute)
+    Feedback.where("feedbackable_id = #{self.id} and feedbackable_type = '#{self.class.name}'")
+      .average(attribute).to_f
   end
 
 end
