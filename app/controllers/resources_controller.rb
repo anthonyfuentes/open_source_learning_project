@@ -1,5 +1,6 @@
 
 class ResourcesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def new
     @resource = Resource.new
@@ -36,8 +37,7 @@ class ResourcesController < ApplicationController
         :media_type,
         :credits,
         :category_id,
-        links_attributes: [:url]
-      )
+        links_attributes: [:url])
     end
 
 end

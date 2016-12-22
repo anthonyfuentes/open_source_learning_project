@@ -12,7 +12,7 @@ class Resource < ApplicationRecord
 
   has_many :feedbacks, as: :feedbackable
 
-  has_many :links, inverse_of: :resource
+  has_many :links, inverse_of: :resource, dependent: :destroy
 
   has_many :resources_tags
   has_many :tags, through: :resources_tags
