@@ -1,25 +1,22 @@
 
-<!-- TODO: fix alignment -->
+<%= simple_form_for(@resource, wrapper: :vertical_form) do |resource_fields| %>
 
+  <%= resource_fields.input :title %>
 
-  <%= simple_form_for(@resource, html: { class: 'form-horizontal' }) do |resource_fields| %>
+  <%= resource_fields.input :subtitle %>
 
-    <%= resource_fields.input :title %>
+  <%= resource_fields.input :description %>
 
-    <%= resource_fields.input :subtitle %>
+  <%= render 'links/link_form', f: resource_fields %>
 
-    <%= resource_fields.input :description %>
+  <%= resource_fields.input :media_type,
+  collection: Resource.media_types.keys.map(&:humanize),
+  value_method: :downcase, as: :select %>
 
-    <%= render 'links/link_form', f: resource_fields %>
+  <%= resource_fields.input :credits %>
 
-    <%= resource_fields.input :media_type,
-    collection: Resource.media_types.keys.map(&:humanize),
-    value_method: :downcase, as: :select %>
+  <%= resource_fields.association :category %>
 
-    <%= resource_fields.input :credits %>
+  <%= resource_fields.submit 'Share', class: "btn btn-success" %>
 
-    <%= resource_fields.association :category %>
-
-    <%= resource_fields.submit 'Share', class: "btn btn-success" %>
-
-  <% end %>
+<% end %>
