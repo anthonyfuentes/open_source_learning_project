@@ -16,13 +16,11 @@
         <p>Programming, Algorithms</p>
         <div class="row">
           <div class="col-xs-6">
-            <!--TODO: feedback completion average-->
-            <p>~10 hrs</p>
+            <p><%= display_time(resource) %></p>
           </div>
           <div class="col-xs-6">
-            <!--TODO: feedback score average-->
-            <p>8.1/10</p>
-            <p>Score</p>
+            <p><%= resource.attribute_average(:rating) %>/10<br>
+            Score</p>
           </div>
         </div>
         <a href="<%= resource.links.first.url %>" role="button",
