@@ -56,7 +56,7 @@ class ResourcesController < ApplicationController
 
   def filter_results(result)
     result = result.where(category_id: params[:category_id].to_i) unless params[:category_id] == ""
-    result = result.joins("OUTER JOIN resources_tag ON resources_tag.resource_id = resource.id").where(tag_id: params[:tag_id]) if params[:tag_id] & !params[:tag_id] == ""
+    result = result.joins("FULL JOIN resources_tag ON resources_tag.resource_id = resource.id").where(tag_id: params[:tag_id]) if params[:tag_id] & !params[:tag_id] == ""
     result = result.all unless !params[:category_id] == "" 
   end
 
