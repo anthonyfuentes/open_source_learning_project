@@ -1,5 +1,6 @@
 
 class Resource < ApplicationRecord
+  validates :title, presence: true
 
   enum media_types: [:video, :interactive, :reading]
 
