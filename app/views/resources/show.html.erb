@@ -1,2 +1,26 @@
-<h1>Resources#show</h1>
-<p>Find me in app/views/resources/show.html.erb</p>
+
+<%= render partial: "resources/resource", locals: { resource: @resource } %>
+
+<div class="panel panel-default">
+
+  <div class="panel-body">
+
+    <div class="row">
+
+      <div class="col-xs-10">
+        <p>Type: <%= @resource.media_type %></p>
+        <!--TODO: displays number atm-->
+        <p>Created by <%= @resource.credits %></p>
+        <p><%= @resource.description %></p>
+      </div>
+
+      <div class="col-xs-2">
+        <%= link_to "Complete", new_resource_feedback_path(@resource),
+          role: "button", class: "btn btn-success" %>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

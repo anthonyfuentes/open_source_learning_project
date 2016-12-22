@@ -4,6 +4,7 @@ class FeedbacksController < ApplicationController
 
   def new
     @feedback = @resource.feedbacks.build
+    # TODO: make abstract to apply to curriculumns as well
   end
 
   def create

@@ -6,7 +6,7 @@
     <div class="row">
 
       <div class="col-xs-8">
-        <h3><%= link_to(resource.title, resource_path(resource.id)) %></h3>
+        <h3><%= link_to resource.title, resource_path(resource) %></h3>
         <p><%= resource.subtitle %></p>
         <p><i>by <%= resource.submitter.username %></i></p>
       </div>
@@ -25,6 +25,8 @@
             <p>Score</p>
           </div>
         </div>
+        <a href="<%= resource.links.first.url %>" role="button",
+          class="btn btn-primary">Go to Resource</a>
       </div>
 
     </div>
