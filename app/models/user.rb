@@ -15,9 +15,6 @@ class User < ApplicationRecord
 
   has_many :feedbacks, dependent: :nullify
 
-  searchable do
-    text :username
-  end
 
   def confrimation_required?
     false

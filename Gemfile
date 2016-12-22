@@ -27,8 +27,8 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'figaro'
 gem 'faker'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
