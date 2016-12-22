@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     get "shared", to: "shared_resources#index"
+    get "curriculums", to: "users_curriculums#index"
   end
 
   resources :resources, only: [:new, :create, :show, :index] do
