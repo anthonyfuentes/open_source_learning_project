@@ -17,7 +17,10 @@ class ResourcesController < ApplicationController
     if params[:q].nil?
       @resources = Resource.includes(:links, :submitter).all
     else
-      @resources = Resource.index_search(params[:q])
+      @resources = Resource.preload(:links, :submitter)
+      binding.pry
+      @resources = @resources.index_search(params)
+      @resources = @resources.results
     end 
   end
 

@@ -1,23 +1,27 @@
 <%= form_tag(resources_path, method: "get") do %>
   <%= label_tag(:q, "Search for:") %>
   <%= text_field_tag(:q) %>
+
+  <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name" ), {:include_blank => 'Category'} %>
+
+  <%= select_tag(:tag_id, Tag.all) %>
+
   <%= submit_tag("Search") %>
 <% end %>
 
-<% if @resources.class == ActiveRecord %>
-  <% @resources.each do |resource| %>
-    <div class="column">
-      <div class="panel panel-default">
-      <h4><b><%= link_to(resource.title, resource_path(resource.id)) %></b></h4>
-      <br>
-      Credit: <%= resource.credits %><br>
-      Submitted By: <%= resource.submitter.username%>
-      <p><%= resource.subtitle %></p>
-      <br>
-      <%= first_link(resource) %>
-      </div>
+
+
+
+<% @resources.each do |resource| %>
+  <div class="column">
+    <div class="panel panel-default">
+    <h4><b><%= link_to(resource.title, resource_path(resource.id)) %></b></h4>
+    <br>
+    Credit: <%= resource.credits %><br>
+    Submitted By: <%= resource.submitter.username%>
+    <p><%= resource.subtitle %></p>
+    <br>
+    <%= first_link(resource) %>
     </div>
-  <% end %>
-<% else %>
-  <%= @resources.results %>
+  </div>
 <% end %>

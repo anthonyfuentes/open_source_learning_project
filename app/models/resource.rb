@@ -20,8 +20,14 @@ class Resource < ApplicationRecord
 
 
   searchable do
-    integer :submitter_id, using: :submitter_id, references: User, multiple: false
-    integer :category_id, using: :category_id, references: Category, multiple: false
+    text :submitter do
+      User.find(submitter_id).username
+    end
+
+    text :category do
+      Category.find(category_id).name
+    end
+    integer :category_id
     text :title
     text :subtitle
     text :description
@@ -31,7 +37,11 @@ class Resource < ApplicationRecord
 
   def self.index_search(params)
     self.search do 
-      fulltext params 
+      all_of do
+        with(:category_id, params[:category_id]) unless params[:category_id] == ""
+      end
+      fulltext params[:q] if params[:q]
     end
   end
+
 end
