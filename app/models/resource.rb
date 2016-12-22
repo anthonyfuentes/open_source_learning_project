@@ -18,4 +18,20 @@ class Resource < ApplicationRecord
 
   accepts_nested_attributes_for :links, reject_if: :all_blank
 
+
+  searchable do
+    integer :submitter_id, using: :submitter_id, references: User, multiple: false
+    integer :category_id, using: :category_id, references: Category, multiple: false
+    text :title
+    text :subtitle
+    text :description
+    integer :media_type
+    text :credits
+  end
+
+  def self.index_search(params)
+    self.search do 
+      fulltext params 
+    end
+  end
 end

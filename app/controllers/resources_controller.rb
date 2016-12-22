@@ -14,8 +14,11 @@ class ResourcesController < ApplicationController
   end
 
   def index
-    
-    @resources = Resource.includes(:links, :submitter).all 
+    if params[:q].nil?
+      @resources = Resource.includes(:links, :submitter).all
+    else
+      @resources = Resource.index_search(params[:q])
+    end 
   end
 
   private
@@ -39,6 +42,10 @@ class ResourcesController < ApplicationController
         :category_id,
         link_attributes: [:url]
       )
+    end
+
+    def query_params
+      params.permit(:q)
     end
 
 end
