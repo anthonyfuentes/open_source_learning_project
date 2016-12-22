@@ -1,3 +1,4 @@
+
 class FeedbacksController < ApplicationController
   before_action :set_resource, only: [:new, :create]
 
@@ -11,18 +12,11 @@ class FeedbacksController < ApplicationController
     @feedback.save ? successful_create : failed_create
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   private
 
     def successful_create
       flash[:success] = "Thanks for sharing! <3"
-      redirect_to resources_path
-      # TODO: redirect to user profile showing resources they've submitted
+      redirect_to user_shared(current_user)
     end
 
     def failed_create

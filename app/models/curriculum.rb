@@ -1,3 +1,4 @@
+
 class Curriculum < ApplicationRecord
   has_many :curriculum_resources
   has_many :resources, through: :curriculum_resources

@@ -1,0 +1,29 @@
+
+<div class="row">
+
+  <div class="col-xs-3 col-xs-offset-1">
+    <!--TODO: image-->
+    <%= first_last_name_heading(@user, h: 1) %>
+    <h3><%= @user.username %></h3>
+  </div>
+
+  <div class="col-xs-7 user-profile-box">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation"><%= link_to 'Curriculums',
+        user_curriculums_path(@user) %></li>
+      <li role="presentation" class="active"><%= link_to 'Shared',
+        user_shared_path(@user) %></li>
+      <li role="presentation"><%= link_to 'Stats', user_path(@user) %></li>
+    </ul>
+
+    <% if @shared_resources.empty? %>
+      <h3 class="text-muted">We'd love to learn from resources you love!</h3>
+    <% else %>
+      <%= render @shared_resources %>
+    <% end %>
+
+  </div>
+
+</div>
+

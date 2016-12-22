@@ -1,6 +1,6 @@
 
 class Resource < ApplicationRecord
-  
+
   enum media_types: [:video, :interactive, :reading]
 
   belongs_to :category, optional: true
@@ -11,7 +11,7 @@ class Resource < ApplicationRecord
 
   has_many :feedbacks, as: :feedbackable
 
-  has_many :links
+  has_many :links, inverse_of: :resource
 
   has_many :resources_tags
   has_many :tags, through: :resources_tags
