@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     resources :feedbacks, only: [:new, :create]
   end
 
+  resources :curriculums, only: [:new, :create, :index, :show]
 end
