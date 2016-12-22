@@ -1,5 +1,8 @@
 
 class Curriculum < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  
   has_many :curriculums_resources
   has_many :resources, through: :curriculums_resources
 
@@ -13,3 +16,4 @@ class Curriculum < ApplicationRecord
     creator.username
   end
 end
+Curriculum.import force: true

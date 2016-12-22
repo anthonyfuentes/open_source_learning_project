@@ -21,11 +21,13 @@ class ResourcesController < ApplicationController
       @resources = Resource.paginate(page: params[:page], per_page: 10).includes(:links, :submitter).all
     else
       @resources = Resource.search params[:q]
-      @resources = @resources.records.paginate
+      @resources = @resources.records
       @resources = filter_results(@resources)
+      @resources = @resources.paginate(page: params[:page], per_page: 10)
       if @resources.empty?
         flash.now[:danger] = "no results"
         @resources = filter_results(Resource)
+        @resources = @resources.paginate(page: params[:page], per_page: 10)
       end
     end
   end
