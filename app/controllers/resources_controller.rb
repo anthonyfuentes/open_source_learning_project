@@ -17,7 +17,7 @@ class ResourcesController < ApplicationController
   end
 
   def index
-    @resources = Resource.includes(:links, :submitter).all
+    @resources = Resource.paginate(page: params[:page], per_page: 10)
   end
 
   private

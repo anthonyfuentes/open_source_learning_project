@@ -65,22 +65,34 @@ def create_links
   end
 end
 
-
-def create_tags
-  puts "Creating tags on resource"
-  Resource.all.each do |n|
-    4.times do
-      n.tags.create(
+def create_tags(n = 4)
+  Resource.all.each do |resource|
+    n.times do
+      resource.tags.create(
         name: Faker::Hacker.noun
       )
     end
   end
+  puts "#{ Tag.count } tags created"
 end
 
+def create_curriculums(n = 10)
+  n.times do
+    Curriculum.create!(
+      creator_id: Faker::Number.between(User.first.id, User.last.id),
+      title:        "#{Faker::Hacker.noun} #{Faker::Hacker.noun}",
+      subtitle:     Faker::Hacker.say_something_smart,
+      description:  Faker::Lorem.paragraph
+      )
+  end
+
+  puts "#{ Curriculum.count } curriculums created"
+end
 
 create_users
 create_sample_user
 create_categories
-create_resources
+create_resources(30)
 create_links
 create_tags
+create_curriculums(30)
