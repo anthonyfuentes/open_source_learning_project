@@ -1,7 +1,7 @@
 
 class Curriculum < ApplicationRecord
-  has_many :curriculum_resources
-  has_many :resources, through: :curriculum_resources
+  has_many :curriculums_resources
+  has_many :resources, through: :curriculums_resources
 
   has_many :feedbacks, as: :feedbackable
 

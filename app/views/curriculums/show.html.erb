@@ -1,2 +1,17 @@
-
-CURRICULUM#SHOW
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <h2><%= @curriculum.title %></h2>
+    <h4><%= @curriculum.subtitle %></h4>
+    <i><%= link_to "Created by: #{@curriculum.creator_name}", @curriculum.creator %></i>
+    <br><br>
+    <h4>Description</h4>
+    <p><%= @curriculum.description %></p>
+    <hr>
+    <h4>Curriculum Resources</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <%= render @curriculum.resources %>
+  </div>
+</div>
