@@ -5,6 +5,7 @@
   > flash
   > layout
   > user profile
+  > links
 */
 
 /* flash */
@@ -22,3 +23,14 @@
   padding: 20px 0 0 0;
 }
 
+/* link-group */
+.link-group {
+  > a {
+    margin: 0 10px 0 0;
+  }
+}
+
+/* form-links */
+.form-links {
+  margin: 15px 0 0 4px;
+}
