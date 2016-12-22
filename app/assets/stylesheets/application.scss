@@ -1,10 +1,24 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/*
+  > flash
+  > layout
+  > user profile
+*/
+
+/* flash */
+.flash-msg {
+  position: absolute;
+}
+
+/* layout */
+.tab-box-top {
+  margin: 0 0 15px 0;
+}
+
+/* user profile */
 .user-profile-box {
   padding: 20px 0 0 0;
 }
 
-.flash-msg {
-  position: absolute;
-}
