@@ -1,6 +1,28 @@
 
-<%= render layout: 'layouts/user_profile' do %>
+<div class="row">
 
-  <%= render @shared_resources %>
+  <div class="col-xs-3 col-xs-offset-1">
+    <!--TODO: image-->
+    <%= first_last_name_heading(@user, h: 1) %>
+    <h3><%= @user.username %></h3>
+  </div>
 
-<% end %>
+  <div class="col-xs-7 user-profile-box">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation"><%= link_to 'Curriculums', '#' %></li>
+      <li role="presentation" class="active"><%= link_to 'Shared',
+        user_shared_path(@user) %></li>
+      <li role="presentation"><%= link_to 'Stats', user_path(@user) %></li>
+    </ul>
+
+    <% if @shared_resources.empty? %>
+      <h3 class="text-muted">We're a community of learners and teachers, so we'd love to learn from resources you love!</h3>
+    <% else %>
+      <%= render @shared_resources %>
+    <% end %>
+
+  </div>
+
+</div>
+

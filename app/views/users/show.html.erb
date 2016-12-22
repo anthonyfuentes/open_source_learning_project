@@ -1,11 +1,22 @@
 
 <div class="row">
-  <div class="col-xs-3">
+
+  <div class="col-xs-3 col-xs-offset-1">
     <!--TODO: image-->
-    <!--TODO: first & last name-->
-    <%= @user.username %>
+    <%= first_last_name_heading(@user, h: 1) %>
+    <h3><%= @user.username %></h3>
   </div>
-  <div class="col-xs-9">
+
+  <div class="col-xs-7 user-profile-box">
+
+    <ul class="nav nav-tabs">
+      <li role="presentation"><%= link_to 'Curriculums', '#' %></li>
+      <li role="presentation"><%= link_to 'Shared',
+        user_shared_path(@user) %></li>
+      <li role="presentation" class="active"><%= link_to 'Stats', user_path(@user) %></li>
+    </ul>
 
   </div>
+
 </div>
+
