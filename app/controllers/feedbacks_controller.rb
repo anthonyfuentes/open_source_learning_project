@@ -20,7 +20,7 @@ class FeedbacksController < ApplicationController
     end
 
     def failed_create
-      flash[:danger] = @feedback.errors.full_messages
+      flash.now[:danger] = @feedback.errors.full_messages
       render :new
     end
 
