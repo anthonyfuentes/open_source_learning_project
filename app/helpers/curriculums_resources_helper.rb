@@ -1,0 +1,2 @@
+module CurriculumsResourcesHelper
+end

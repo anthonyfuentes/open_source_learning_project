@@ -1,8 +1,6 @@
 
 <div class="panel panel-default">
-
   <div class="panel-body">
-
     <div class="row">
 
       <div class="col-xs-8">
@@ -25,10 +23,11 @@
             <p>Score</p>
           </div>
         </div>
+        <% if cookies[:curriculum_id] %>
+            I can see cookies, see: <%= cookies[:curriculum_id] %>
+        <% end %>
       </div>
 
     </div>
-
   </div>
-
 </div>
