@@ -24,6 +24,12 @@ class Resource < ApplicationRecord
       User.find(submitter_id).username
     end
 
+    text :tags do 
+      tags.map { |tag| tag.name }
+    end
+
+    join(:tag_id, :target => ResourcesTag, :type => :integer, :join => { :from => :resource_id, :to => :id })
+
     text :category do
       Category.find(category_id).name
     end
@@ -39,6 +45,7 @@ class Resource < ApplicationRecord
     self.search do 
       all_of do
         with(:category_id, params[:category_id]) unless params[:category_id] == ""
+        with(:tag_id, params[:tag_id]) unless params[:tag_id] == ""
       end
       fulltext params[:q] if params[:q]
     end
