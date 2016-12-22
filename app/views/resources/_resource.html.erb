@@ -1,0 +1,34 @@
+
+<div class="panel panel-default">
+
+  <div class="panel-body">
+
+    <div class="row">
+
+      <div class="col-xs-8">
+        <h3><%= link_to(resource.title, resource_path(resource.id)) %></h3>
+        <p><%= resource.subtitle %></p>
+        <p><i>by <%= resource.submitter.username %></i></p>
+      </div>
+
+      <div class="col-xs-4">
+        <!--TODO: tags-->
+        <p>Programming, Algorithms</p>
+        <div class="row">
+          <div class="col-xs-6">
+            <!--TODO: feedback completion average-->
+            <p>~10 hrs</p>
+          </div>
+          <div class="col-xs-6">
+            <!--TODO: feedback score average-->
+            <p>8.1/10</p>
+            <p>Score</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
