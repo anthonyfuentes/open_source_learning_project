@@ -23,6 +23,8 @@
         class: 'btn btn-default' %>
     </div>
   <hr>
+  <%= will_paginate @resources %>
   <%= render @resources %>
+  <%= will_paginate @resources %>
   </div>
 </div>

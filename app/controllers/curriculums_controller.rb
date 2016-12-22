@@ -1,7 +1,7 @@
 
 class CurriculumsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  
+
   def new
     @curriculum = Curriculum.new
   end
@@ -17,7 +17,7 @@ class CurriculumsController < ApplicationController
   end
 
   def index
-    @curriculums = Curriculum.all
+    @curriculums = Curriculum.paginate(page: params[:page], per_page: 10)
   end
 
   private
