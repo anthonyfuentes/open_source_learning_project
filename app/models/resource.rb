@@ -19,4 +19,37 @@ class Resource < ApplicationRecord
 
   accepts_nested_attributes_for :links, reject_if: :all_blank
 
+
+  searchable do
+    text :submitter do
+      User.find(submitter_id).username
+    end
+
+    text :tags do 
+      tags.map { |tag| tag.name }
+    end
+
+    join(:tag_id, :target => ResourcesTag, :type => :integer, :join => { :from => :resource_id, :to => :id })
+
+    text :category do
+      Category.find(category_id).name
+    end
+    integer :category_id
+    text :title
+    text :subtitle
+    text :description
+    integer :media_type
+    text :credits
+  end
+
+  def self.index_search(params)
+    self.search do 
+      all_of do
+        with(:category_id, params[:category_id]) unless params[:category_id] == ""
+        with(:tag_id, params[:tag_id]) unless params[:tag_id] == ""
+      end
+      fulltext params[:q] if params[:q]
+    end
+  end
+
 end

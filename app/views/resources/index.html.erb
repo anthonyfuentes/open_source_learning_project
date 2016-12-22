@@ -1,3 +1,16 @@
+<%= form_tag(resources_path, method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+
+  <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name" ), {:include_blank => 'Category'} %>
+
+  <%= select_tag(:tag_id, Tag.all) %>
+
+  <%= submit_tag("Search") %>
+<% end %>
+
+
+
 
 <div class="row">
   <div class="col-xs-12">
