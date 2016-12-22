@@ -1,6 +1,7 @@
 
 class CurriculumsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  
   def new
     @curriculum = Curriculum.new
   end
@@ -13,6 +14,10 @@ class CurriculumsController < ApplicationController
   def show
     session[:curriculum_id] = nil
     @curriculum = Curriculum.find_by(id: params[:id])
+  end
+
+  def index
+    @curriculums = Curriculum.all
   end
 
   private

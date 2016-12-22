@@ -65,8 +65,23 @@ def create_links
   end
 end
 
+def create_curriculums(n = 10)
+  n.times do 
+    c = Curriculum.create!(
+      creator_id: Faker::Number.between(User.first.id, User.last.id),
+      title:        "#{Faker::Hacker.noun} #{Faker::Hacker.noun}",
+      subtitle:     Faker::Hacker.say_something_smart,
+      description:  Faker::Lorem.paragraph
+      )
+    c.resource_ids = Array.new(2) {Resource.all.sample.id}
+  end 
+
+  puts "#{ Curriculum.count } curriculums created"
+end
+
 create_users
 create_sample_user
 create_categories
 create_resources
 create_links
+create_curriculums
