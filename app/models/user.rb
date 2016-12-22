@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   has_many :feedbacks, dependent: :nullify
 
+
   def confrimation_required?
     false
   end

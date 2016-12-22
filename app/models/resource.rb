@@ -1,5 +1,9 @@
+require 'elasticsearch/model'
 
 class Resource < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   validates :title, presence: true
 
   enum media_types: [:video, :interactive, :reading]
@@ -22,4 +26,7 @@ class Resource < ApplicationRecord
   def url
     links.first.url unless links.empty?
   end
+
 end
+
+Resource.import force: true
