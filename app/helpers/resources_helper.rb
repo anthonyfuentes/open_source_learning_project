@@ -12,4 +12,12 @@ module ResourcesHelper
     Resource.media_types.keys.map(&:humanize)[resource.media_type]
   end
 
+  def resource_url( resource )
+    if resource.url
+      link_to "Go to Resource", resource.url, class: "btn btn-primary pull-right"
+    else
+      "No link found for this resource."
+    end
+  end
+
 end

@@ -11,14 +11,14 @@ class CurriculumsController < ApplicationController
   end
 
   def show
-    cookies.delete(:curriculum_id)
+    session[:curriculum_id] = nil
     @curriculum = Curriculum.find_by(id: params[:id])
   end
 
   private
 
     def successful_create
-      cookies[:curriculum_id] = @curriculum.id
+      session[:curriculum_id] = @curriculum.id
       redirect_to resources_path
     end
 

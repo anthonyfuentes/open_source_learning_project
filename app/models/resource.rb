@@ -19,4 +19,7 @@ class Resource < ApplicationRecord
 
   accepts_nested_attributes_for :links, reject_if: :all_blank
 
+  def url
+    links.first.url unless links.empty?
+  end
 end

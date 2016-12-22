@@ -21,9 +21,10 @@
             Score</p>
           </div>
         </div>
-        <a href="<%= resource.links.first.url %>" role="button",
-          class="btn btn-primary pull-right">Go to Resource</a>
-        <% if curriculum_id = cookies[:curriculum_id] %>
+
+        <%= resource_url( resource ) %>
+
+        <% if curriculum_id = session[:curriculum_id] %>
             <%= curriculum_resource_toggle_link( curriculum_id, resource.id ) %>
         <% end %>
       </div>
