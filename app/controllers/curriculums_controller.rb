@@ -18,9 +18,10 @@ class CurriculumsController < ApplicationController
 
   def index
     if params[:q].nil?
-      @curriculums = Curriculum.paginate(page: params[:page], per_page: 10).includes(:links, :submitter).all
+      @curriculums = Curriculum.paginate(page: params[:page], per_page: 10).all
     else
       @curriculums = Curriculum.search params[:q]
+      binding.pry
       @curriculums = @curriculums.records
       @curriculums = filter_results(@curriculums)
       @curriculums = @curriculums.paginate(page: params[:page], per_page: 10)
