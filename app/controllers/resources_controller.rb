@@ -17,7 +17,17 @@ class ResourcesController < ApplicationController
   end
 
   def index
-    @resources = Resource.includes(:links, :submitter).all
+    if params[:q].nil?
+      @resources = Resource.includes(:links, :submitter).all
+    else
+      @resources = Resource.search params[:q]
+      @resources = @resources.records
+      @resources = filter_results(@resources)
+      if @resources.empty? 
+        flash.now[:danger] = "no results"
+        @resources = filter_results(Resource)
+      end
+    end 
   end
 
   private
@@ -40,5 +50,15 @@ class ResourcesController < ApplicationController
         :category_id,
         links_attributes: [:url])
     end
+
+    def query_params
+      params.permit(:q)
+    end
+
+  def filter_results(result)
+    result = result.where(category_id: params[:category_id].to_i) unless params[:category_id] == ""
+    result = result.joins("FULL JOIN resources_tag ON resources_tag.resource_id = resource.id").where(tag_id: params[:tag_id]) if params[:tag_id] & !params[:tag_id] == ""
+    result = result.all unless !params[:category_id] == "" 
+  end
 
 end

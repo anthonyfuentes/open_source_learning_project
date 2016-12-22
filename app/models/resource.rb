@@ -1,5 +1,8 @@
-
+require 'elasticsearch/model'
 class Resource < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   validates :title, presence: true
 
   enum media_types: [:video, :interactive, :reading]
@@ -19,4 +22,6 @@ class Resource < ApplicationRecord
 
   accepts_nested_attributes_for :links, reject_if: :all_blank
 
+
 end
+Resource.import force: true
