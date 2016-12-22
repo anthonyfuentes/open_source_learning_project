@@ -6,6 +6,7 @@
   > layout
   > user profile
   > links
+  > index button
 */
 
 /* flash */
@@ -35,3 +36,10 @@
 .form-links {
   margin: 15px 0 0 4px;
 }
+
+/* index-button */
+#fixed-index-btn {
+  position: fixed;
+  left: 150px;
+}
+

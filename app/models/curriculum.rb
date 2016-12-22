@@ -8,4 +8,8 @@ class Curriculum < ApplicationRecord
   belongs_to :creator, class_name: "User"
 
   validates :title, :subtitle, presence: true, length: { minimum: 4 }
+
+  def creator_name
+    creator.username
+  end
 end

@@ -1,3 +1,4 @@
+
 class CurriculumsController < ApplicationController
 
   def new
@@ -7,6 +8,11 @@ class CurriculumsController < ApplicationController
   def create
     @curriculum = current_user.curriculums.build(curriculum_params)
     @curriculum.save ? successful_create : failed_create
+  end
+
+  def show
+    cookies.delete(:curriculum_id)
+    @curriculum = Curriculum.find_by(id: params[:id])
   end
 
   private
