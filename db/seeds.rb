@@ -51,7 +51,7 @@ def create_resources(n = 10)
                     subtitle:     Faker::Hacker.say_something_smart,
                     description:  Faker::Lorem.paragraph,
                     media_type:   [0,1,2].sample,
-                    credits:      Faker::Internet.user_name)
+                    credits:      Faker::Name.name)
   end
   puts "#{ Resource.count } resources created"
 end
@@ -65,8 +65,22 @@ def create_links
   end
 end
 
+
+def create_tags
+  puts "Creating tags on resource"
+  Resource.all.each do |n|
+    4.times do
+      n.tags.create(
+        name: Faker::Hacker.noun
+      )
+    end
+  end
+end
+
+
 create_users
 create_sample_user
 create_categories
 create_resources
 create_links
+create_tags
