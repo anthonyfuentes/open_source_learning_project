@@ -1,0 +1,7 @@
+<%= simple_form_for @curriculum, wrapper: :vertical_form do |f| %>
+  <%= f.input :title,       placeholder: "e.g. Astronomy 101" %>
+  <%= f.input :subtitle,    placeholder: "e.g. Learn the basics of the universe." %>
+  <%= f.input :description, placeholder: "Know thyself and you shall know the secrets of all the universe." %>
+
+  <%= f.submit "Next", class: 'btn btn-success <btn-md></btn-md>'%>
+<% end %>
