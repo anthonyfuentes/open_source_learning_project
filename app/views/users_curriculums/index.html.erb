@@ -21,7 +21,7 @@
       <% if current_user == @user %>
         <%= link_to "Create a Curriculum", new_curriculum_path,
             class: 'btn btn-success btn-md pull-right btn-user-profile' %>
-      <% end %>      
+      <% end %>
       <%= link_to "View Curriculums", curriculums_path,
             class: 'btn btn-success btn-md pull-right btn-user-profile' %>
 
@@ -29,8 +29,10 @@
       <div class="row" style="margin-bottom: 15px">
         <div class="col-xs-12">
           <%= will_paginate @user_curriculums %>
-          <%= link_to "Create a Curriculum", new_curriculum_path,
-            class: 'btn btn-success btn-md pull-right btn-user-profile' %>
+          <% if current_user == @user %>
+            <%= link_to "Create a Curriculum", new_curriculum_path,
+              class: 'btn btn-success btn-md pull-right btn-user-profile' %>
+          <% end %>
         </div>
       </div>
       <%= render @user_curriculums %>
@@ -39,4 +41,3 @@
   </div>
 
 </div>
-
