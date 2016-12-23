@@ -14,6 +14,7 @@ class ResourcesController < ApplicationController
 
   def show
     @resource = Resource.find(params[:id])
+    @tags = @resource.tags.limit(3)
   end
 
   def index
