@@ -5,7 +5,7 @@ class User < ApplicationRecord
   #, :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable# TODO: reinstate, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many  :submitted_resources,
             foreign_key: :submitter_id,
