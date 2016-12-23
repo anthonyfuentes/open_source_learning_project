@@ -24,7 +24,7 @@
 
         <%= resource_url(resource) %>
 
-        <% if curriculum_id = session[:curriculum_id] %>
+        <% if curriculum_id = (session[:curriculum_id] || params[:id]) %>
             <%= curriculum_resource_toggle_link(curriculum_id, resource.id) %>
         <% end %>
       </div>
