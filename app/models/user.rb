@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-         
+
   has_many :submitted_resources,
             foreign_key: :submitter_id,
             class_name: "Resource",
