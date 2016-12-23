@@ -57,8 +57,7 @@
     <li role="presentation" ><%= link_to "Progress",
       curriculum_progress_path(@curriculum) %></li>
   <% elsif current_user %>
-    <!-- TODO: fix broken link -->
-    <li role="presentation"><%= link_to "Add Curriculum!",
+    <li role="presentation"><%= link_to "Study Curriculum",
       curriculums_users_path(curriculum_id: @curriculum.id,
                              user_id: current_user.id),
                              method: :post %></li>
@@ -77,10 +76,8 @@
 <% end %>
 
 <div class="row">
-
   <div class="col-xs-12">
     <%= render partial: "shared/comment_form", locals:
       { comment_path: url_for([@curriculum, :comments]) } %>
-</div>
-
+  </div>
 </div>

@@ -3,8 +3,9 @@ class FeedbacksController < ApplicationController
   before_action :set_resource, only: [:new, :create]
 
   def new
-    @feedback = @resource.feedbacks.build
     # TODO: make abstract to apply to curriculumns as well
+    @feedback = @resource.feedbacks.build
+    session[:referrer] = request.referrer
   end
 
   def create
@@ -18,7 +19,17 @@ class FeedbacksController < ApplicationController
 
     def successful_create
       flash[:success] = "Thanks for sharing! <3"
-      redirect_to user_shared_path(current_user)
+
+      redirect_after_create
+    end
+
+    def redirect_after_create
+      if session[:referrer].include?('curriculums')
+        redirect_to session[:referrer]
+        session[:referrer] = nil
+      else
+        redirect_to user_shared_path(current_user)
+      end
     end
 
     def failed_create

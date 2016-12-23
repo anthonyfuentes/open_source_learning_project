@@ -19,7 +19,9 @@
     <% if @shared_resources.empty? %>
       <h3 class="text-muted">We'd love to learn from resources you love!</h3>
     <% else %>
+      <%= will_paginate @shared_resources %>
       <%= render @shared_resources %>
+      <%= will_paginate @shared_resources %>
     <% end %>
 
   </div>
