@@ -11,10 +11,15 @@ class Curriculum < ApplicationRecord
 
   belongs_to :creator, class_name: "User"
 
+  has_many  :curriculums_users,
+            dependent: :destroy
+
+  has_many  :users, through: :curriculums_users
+
   validates :title, :subtitle, presence: true, length: { minimum: 4 }
 
   def creator_name
-    creator.username
+    creator.username if creator
   end
 
   def category_name

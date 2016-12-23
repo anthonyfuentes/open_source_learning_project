@@ -4,7 +4,7 @@
     <div class="row">
 
       <div class="col-xs-8">
-        <h3><%= link_to(curriculum.title, curriculum_path(curriculum)) %></h3>
+        <h3><%= link_to(curriculum.title.titleize, curriculum_path(curriculum)) %></h3>
         <p><%= curriculum.subtitle %></p>
         <p><i>by <%= curriculum.creator_name %></i></p>
       </div>
@@ -24,7 +24,9 @@
           </div>
         </div>
 
+
         <%= edit_curriculum_link(curriculum) %>
+
 
         <%= copy_curriculum_link(curriculum.id) %>
 

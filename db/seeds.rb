@@ -1,13 +1,13 @@
 
 if Rails.env.development?
-  # puts "Deleting Users"
-  # User.destroy_all
-  # puts "Destroying Resources"
-  # Resource.destroy_all
-  # puts "Destroying Catagories"
-  # Category.destroy_all
-  # puts "Destroying Links"
-  # Link.destroy_all
+  puts "Deleting Users"
+  User.destroy_all
+  puts "Destroying Resources"
+  Resource.destroy_all
+  puts "Destroying Catagories"
+  Category.destroy_all
+  puts "Destroying Links"
+  Link.destroy_all
 end
 
 def create_users(n = 10)
