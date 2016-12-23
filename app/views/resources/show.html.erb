@@ -14,7 +14,7 @@
     </div>
 
     <div class="col-xs-4">
-      <p><strong><%# @resource.category.name %></strong></p>
+      <p><strong><%= @resource.category.name %></strong></p>
       <p><%= display_tags(@resource) %></p>
     </div>
 
@@ -47,19 +47,12 @@
 </div>
 
 <div class="panel panel-default">
-
   <div class="panel-body">
-
     <div class="row">
-
-      <div class="col-xs-8">
         <%= @resource.description %>
       </div>
-
     </div>
-
   </div>
-
 </div>
 
 <% @resource.comments.each do |comment| %>

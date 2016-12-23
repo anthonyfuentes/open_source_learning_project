@@ -1,3 +1,4 @@
+
 <div class="jumbotron">
   <h1><%= @curriculum.title %></h1>
   <div class="row">
@@ -7,7 +8,7 @@
     </div>
 
     <div class="col-xs-4">
-      <p><strong><%= @curriculum.category_name %></strong></p>
+      <p><strong><%# @curriculum.category_name %></strong></p>
       <!-- TODO: Add curriculum accumulated tags? -->
     </div>
   </div>
@@ -52,4 +53,20 @@
   <div class="panel-body">
     <%= render @curriculum.resources %>
   </div>
+</div>
+
+<% @curriculum.comments.each do |comment| %>
+  <%= render partial: "shared/comment", locals: { comment: comment } %>
+<% end %>
+
+<div class="row">
+
+  <div class="col-xs-1">
+  </div>
+
+  <div class="col-xs-11">
+    <%= render partial: "shared/comment_form", locals:
+      { comment_path: url_for([@curriculum, :comments]) } %>
+  </div>
+
 </div>
