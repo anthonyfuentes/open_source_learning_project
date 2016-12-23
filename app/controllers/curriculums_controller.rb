@@ -13,6 +13,7 @@ class CurriculumsController < ApplicationController
   end
 
   def show
+    session[:curriculum_id] = nil
     @resources = @curriculum.resources.sort_by do |resource|
       resource.curriculums_resources
         .where(curriculum_id: @curriculum.id)
@@ -39,13 +40,18 @@ class CurriculumsController < ApplicationController
   end
 
   def edit
-    session[:curriculum_id] = nil
+
     @curriculum = Curriculum.find_by(id: params[:id],
                                     creator_id: current_user.id)
+
+    session[:curriculum_id] = @curriculum.id
+
     @resources = @curriculum.resources.paginate(page: params[:page], per_page: 5)
   end
 
   def update
+    session[:curriculum_id] = nil
+
     @curriculum = Curriculum.find_by(id: params[:id],
                                      creator_id: current_user.id)
     if @curriculum.update(curriculum_params)
@@ -72,7 +78,7 @@ class CurriculumsController < ApplicationController
   end
 
   def successful_update
-    redirect_to request.referrer
+    redirect_to @curriculum
   end
 
   def failed_update

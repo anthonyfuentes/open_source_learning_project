@@ -4,6 +4,7 @@
     <div class="row">
 
       <div class="col-xs-8">
+        <!-- Denotes that your editing -->
         <% if params[:user_id] && @curriculum %>
           <%= order_field %>
         <% end %>
@@ -25,11 +26,16 @@
           </div>
         </div>
 
+        <!-- params[:id] == curriculum id on curriculum edit page -->
+        <% if curriculum_id = (session[:curriculum_id] || (params[:user_id] && @curriculum)) %>
+          <%= curriculum_resource_toggle_link(curriculum_id, resource.id) %>
+        <% elsif @curriculum && current_user %>
+          <%= mark_complete_button( resource.id ) %>
+        <% end %>
+
+
         <%= resource_url(resource) %>
 
-        <% if curriculum_id = (session[:curriculum_id] || params[:id]) %>
-          <%= curriculum_resource_toggle_link(curriculum_id, resource.id) %>
-        <% end %>
       </div>
 
     </div>

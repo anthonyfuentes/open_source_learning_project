@@ -18,7 +18,6 @@ class ResourcesController < ApplicationController
   end
 
   def index
-    session[:curriculum_id] = params[:curriculum_id]
     if params[:q].nil?
       @resources = Resource.paginate(page: params[:page], per_page: 10).includes(:links, :submitter).all
     else

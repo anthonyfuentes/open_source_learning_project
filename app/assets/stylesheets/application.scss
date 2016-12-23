@@ -56,3 +56,12 @@
   position: absolute;
   left: 0;
 }
+
+.inline-headers h2, .inline-headers h4 {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.btn-group {
+  margin-top: 15px;
+}
