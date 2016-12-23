@@ -1,6 +1,6 @@
 
 <%= f.fields_for :links do |link_fields| %>
 
-  <%= link_fields.input :url %>
+  <%= link_fields.input :url, input_html: {value: 'http'} %>
 
 <% end %>

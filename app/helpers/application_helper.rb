@@ -19,4 +19,8 @@ module ApplicationHelper
     tag_names.join(', ')
   end
 
+  # def valid_url(url)
+  #
+  # end
+
 end
