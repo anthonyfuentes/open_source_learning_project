@@ -25,6 +25,8 @@ class User < ApplicationRecord
 
   has_many :feedbacks, dependent: :nullify
 
+  has_many :comments, dependent: :nullify
+
 
   def created?(curriculum)
     id == curriculum.creator_id

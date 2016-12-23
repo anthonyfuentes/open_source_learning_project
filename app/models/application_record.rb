@@ -9,4 +9,15 @@ class ApplicationRecord < ActiveRecord::Base
                    .average(attribute).to_f.round(1)
   end
 
+  def category_name
+    class_name = self.class.name
+    return nil unless class_name.constantize.reflect_on_association(:category)
+
+    if self.category.nil?
+      "None"
+    else
+      self.category.name
+    end
+  end
+
 end

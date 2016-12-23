@@ -24,13 +24,5 @@ class Curriculum < ApplicationRecord
     creator.username if creator
   end
 
-  def category_name
-    if resources.empty?
-      "No category"
-    else
-      resources.first.category.name
-    end 
-  end
-
 end
 Curriculum.import force: true
