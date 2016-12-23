@@ -1,10 +1,11 @@
 
 <div class="jumbotron">
 
+  <h1><%= @resource.title %></h1>
+
   <div class="row">
 
     <div class="col-xs-8">
-      <h1><%= @resource.title %></h1>
       <p><%= @resource.subtitle  %></p>
       <p>Credit: <%= @resource.credits %></p>
       <% @resource.links.each do |link| %>
@@ -30,43 +31,55 @@
 </div>
 
 <div class="row text-center" id="stats-container">
+
   <div class="col-xs-4">
     <div class="thumbnail">
       <%= image_tag("interface.png", class: "icon") %>
       <p><%= @resource.attribute_average(:rating) %>/10<br>
         Value Score</p>
-      </div>
     </div>
+  </div>
 
-    <div class="col-xs-4">
-      <div class="thumbnail">
-        <%= image_tag("circle.png", class: "icon" ) %>
-        <p><%= @resource.attribute_average(:difficulty) %>/10<br>
-          Difficulty Score</p>
-        </div>
-      </div>
-
-      <div class="col-xs-4">
-        <div class="thumbnail">
-          <%= image_tag("clock.png", class: "icon") %>
-          <p><%= display_time(@resource).gsub(/\n/, '<br/>').html_safe %></p>
-        </div>
-      </div>
-
+  <div class="col-xs-4">
+    <div class="thumbnail">
+      <%= image_tag("circle.png", class: "icon" ) %>
+      <p><%= @resource.attribute_average(:difficulty) %>/10<br>
+        Difficulty Score</p>
     </div>
+  </div>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-xs-12">
-            <%= @resource.description %>
-          </div>
+  <div class="col-xs-4">
+    <div class="thumbnail">
+      <%= image_tag("clock.png", class: "icon") %>
+      <p><%= display_time(@resource).gsub(/\n/, '<br/>').html_safe %></p>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12">
+          <%= @resource.description %>
         </div>
       </div>
     </div>
   </div>
+
+</div>
+
+<% @resource.comments.each do |comment| %>
+  <%= render partial: "shared/comment", locals: { comment: comment } %>
+<% end %>
+
+<div class="row">
+
+  <div class="col-xs-12">
+    <%= render partial: "shared/comment_form", locals:
+      { comment_path: url_for([@resource, :comments]) } %>
+  </div>
+
 </div>
 
 <div class="footer">
-<p>Icons designed by Google from Flaticon</p>
+  <p>Icons designed by Google from Flaticon</p>
 </div>

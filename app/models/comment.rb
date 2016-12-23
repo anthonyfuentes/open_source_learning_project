@@ -1,3 +1,3 @@
 class Comment < ApplicationRecord
-  belongs_to :feedbackable, polymorphic: true
+  belongs_to :commentable, polymorphic: true
 end

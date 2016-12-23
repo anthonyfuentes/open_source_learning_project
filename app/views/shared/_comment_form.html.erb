@@ -1,11 +1,17 @@
-<div>   
-  <%= form_for Comment.new, url: comments_path(commentable) do |f| %>               
-  <div class="row">
-    <div class = "col-xs-10 col-xs-offset-1" >
-    <%= f.text_area :body, class: "form-control", placeholder: "Type a comment in here", rows: 4 %>
-    <%= f.submit "Comment", class: "btn btn-primary btn-sm" %>
+
+<div>
+
+  <%= form_for Comment.new, url: comment_path do |f| %>
+
+    <div class="row">
+
+      <div class = "col-xs-12" >
+        <%= f.text_area :body, class: "form-control", placeholder: "Type a comment in here", rows: 4 %>
+        <%= f.submit "Comment", class: "btn btn-primary btn-sm" %>
+      </div>
+
     </div>
-  </div>
+
   <% end %>
+
 </div>
-  

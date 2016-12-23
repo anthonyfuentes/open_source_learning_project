@@ -13,12 +13,14 @@ Rails.application.routes.draw do
 
   resources :resources, only: [:new, :create, :show, :index] do
     resources :feedbacks, only: [:new, :create]
+    resources :comments, only: [:create]
   end
 
   resources :curriculums, only: [:new, :create, :index, :show] do
     resources :feedbacks, only: [:new, :create]
+    resources :comments, only: [:create]
   end
-  resources :comments, only: [:create]
+
   resources :curriculums_resources, only: [:create, :destroy]
 
 end
