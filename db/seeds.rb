@@ -89,6 +89,22 @@ def create_curriculums(n = 10)
   puts "#{ Curriculum.count } curriculums created"
 end
 
+def add_resources_to_curriculums( curriculums )
+  resources = Resource.all
+
+  curriculums.each do |curriculum|
+    while curriculum.resources.length < 3
+      r = resources.sample
+      unless curriculum.resources.include? r
+        curriculum.resources << r
+      end
+    end
+  end
+
+  puts "Resources add to curriculums"
+
+end
+
 create_users
 create_sample_user
 create_categories
@@ -96,3 +112,4 @@ create_resources(30)
 create_links
 create_tags
 create_curriculums(30)
+add_resources_to_curriculums(Curriculum.all)

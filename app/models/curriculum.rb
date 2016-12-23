@@ -2,7 +2,7 @@
 class Curriculum < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-  
+
   has_many :curriculums_resources
   has_many :resources, through: :curriculums_resources
 
@@ -16,5 +16,10 @@ class Curriculum < ApplicationRecord
   def creator_name
     creator.username
   end
+
+  def category_name
+    resources.first.category.name unless resources.empty?
+  end
+
 end
 Curriculum.import force: true
