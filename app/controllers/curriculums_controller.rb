@@ -21,13 +21,10 @@ class CurriculumsController < ApplicationController
       @curriculums = Curriculum.paginate(page: params[:page], per_page: 10).all
     else
       @curriculums = Curriculum.search params[:q]
-      binding.pry
       @curriculums = @curriculums.records
-      @curriculums = filter_results(@curriculums)
       @curriculums = @curriculums.paginate(page: params[:page], per_page: 10)
       if @curriculums.empty?
         flash.now[:danger] = "no results"
-        @curriculums = filter_results(Curriculum)
         @curriculums = @curriculums.paginate(page: params[:page], per_page: 10)
       end
     end
