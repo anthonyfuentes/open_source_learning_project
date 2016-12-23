@@ -8,27 +8,27 @@
   </div>
 
   <div class="col-xs-7 user-profile-box">
-
     <ul class="nav nav-tabs nav-tabs tab-box-top">
       <li role="presentation" class="active"><%= link_to 'Curriculums',
         user_curriculums_path(@user) %></li>
       <li role="presentation"><%= link_to 'Shared',
         user_shared_path(@user) %></li>
-      <li role="presentation"><%= link_to 'Stats', user_path(@user) %></li>
     </ul>
 
     <% if @user_curriculums.empty? %>
       <h3 class="text-muted">This is where all of the curriculums you create will appear :D</h3>
     <% else %>
-    <%= render @user_curriculums %>
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-xs-12">
+          <%= will_paginate @user_curriculums %>
+          <%= link_to "Create a Curriculum", new_curriculum_path,
+            class: 'btn btn-success btn-md pull-right btn-user-profile' %>
+        </div>
+      </div>
+      <%= render @user_curriculums %>
+      <%= will_paginate @user_curriculums %>
     <% end %>
-
   </div>
 
 </div>
 
-<div class="row">
-  <div class="col-xs-7  col-xs-offset-4">
-   <%= link_to "Create a Curriculum", new_curriculum_path, class: 'btn btn-success btn-md' %>
-  </div>
-</div>

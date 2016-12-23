@@ -1,43 +1,31 @@
-<%= form_tag(resources_path, method: "get") do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
-
-  <%= select_tag :category_id, options_from_collection_for_select(Category.all, "id", "name" ), {:include_blank => 'Category'} %>
-
-  <%= select_tag(:tag_id, Tag.all) %>
-
-  <%= submit_tag("Search") %>
-<% end %>
-
-
-
 
 <% if curriculum = Curriculum.find_by(id: session[:curriculum_id]) %>
-
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
       <h2>Editing <%= curriculum.title %></h2>
     </div>
   </div>
-
-  <%= link_to "Finish Adding Resources",
-    curriculum_path(curriculum),
-    class: 'btn btn-success btn-lg',
-    id: 'fixed-index-btn'  %>
-
 <% end %>
 
 <div class="row">
-  <div class="col-xs-10 col-xs-offset-1">
+  <div class="col-xs-1">
+    <% if curriculum %>
+      <%= link_to "Finish",
+        edit_user_curriculum_path(current_user.id, session[:curriculum_id]),
+        class: 'btn btn-success btn-lg' %>
+    <% end %>
+  </div>
+
+  <div class="col-xs-10">
     <div class="btn-group" role="group">
       <%= link_to 'Resources', resources_path,
         class: 'btn btn-default active' %>
       <%= link_to 'Curriculums', curriculums_path,
         class: 'btn btn-default' %>
     </div>
-  <hr>
-  <%= will_paginate @resources %>
-  <%= render @resources %>
-  <%= will_paginate @resources %>
+    <hr>
+    <%= will_paginate @resources %>
+    <%= render @resources %>
+    <%= will_paginate @resources %>
   </div>
 </div>

@@ -35,7 +35,7 @@ end
 def create_categories(n = 3)
   #puts "Creating Catagories"
   n.times do
-    Category.create!(name: "#{Faker::Company.buzzword}(n)")
+    Category.create!(name: "#{Faker::Company.buzzword.capitalize}(n)")
   end
   puts "#{ Category.count } categories created"
 end
@@ -47,7 +47,7 @@ def create_resources(n = 10)
   n.times do
     Resource.create(submitter_id: Faker::Number.between(User.first.id, User.last.id),
                     category_id:  Faker::Number.between(Category.first.id, Category.last.id),
-                    title:        Faker::Hacker.noun,
+                    title:        Faker::Hacker.noun.titleize,
                     subtitle:     Faker::Hacker.say_something_smart,
                     description:  Faker::Lorem.paragraph,
                     media_type:   [0,1,2].sample,
@@ -80,13 +80,29 @@ def create_curriculums(n = 10)
   n.times do
     Curriculum.create!(
       creator_id: Faker::Number.between(User.first.id, User.last.id),
-      title:        "#{Faker::Hacker.noun} #{Faker::Hacker.noun}",
+      title:        "#{Faker::Hacker.noun.titleize} #{Faker::Hacker.noun.titleize}",
       subtitle:     Faker::Hacker.say_something_smart,
       description:  Faker::Lorem.paragraph
       )
   end
 
   puts "#{ Curriculum.count } curriculums created"
+end
+
+def add_resources_to_curriculums( curriculums )
+  resources = Resource.all
+
+  curriculums.each do |curriculum|
+    while curriculum.resources.length < 3
+      r = resources.sample
+      unless curriculum.resources.include? r
+        curriculum.resources << r
+      end
+    end
+  end
+
+  puts "Resources add to curriculums"
+
 end
 
 create_users
@@ -96,3 +112,4 @@ create_resources(30)
 create_links
 create_tags
 create_curriculums(30)
+add_resources_to_curriculums(Curriculum.all)

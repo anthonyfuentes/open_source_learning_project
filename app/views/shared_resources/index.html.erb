@@ -14,7 +14,6 @@
         user_curriculums_path(@user) %></li>
       <li role="presentation" class="active"><%= link_to 'Shared',
         user_shared_path(@user) %></li>
-      <li role="presentation"><%= link_to 'Stats', user_path(@user) %></li>
     </ul>
 
     <% if @shared_resources.empty? %>
