@@ -84,4 +84,9 @@
 
 </div>
 
-<%= render partial:
+<% @resource.comments.each do |comment| %>
+  <%= render partial: "shared/comment", locals: { comment: comment } %>
+<% end %>
+
+<%= render partial: "shared/comment_form", locals:
+  { comment_path: url_for([@resource, :comments]) } %>
