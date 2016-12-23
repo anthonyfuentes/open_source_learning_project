@@ -13,6 +13,7 @@ class CurriculumsController < ApplicationController
   end
 
   def show
+    session[:curriculum_id] = nil
     @resources = @curriculum.resources.sort_by do |resource|
       resource.curriculums_resources
         .where(curriculum_id: @curriculum.id)

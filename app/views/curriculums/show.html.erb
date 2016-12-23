@@ -1,3 +1,4 @@
+
 <%= render partial: 'shared/top_show', locals: { show_object: @curriculum, tags: @tags } %>
 
 <div class="panel panel-default">
@@ -11,6 +12,22 @@
   </div>
 </div>
 
+<ul class="nav nav-tabs tab-box-top">
+  <li role="presentation" class="active"><%= link_to "Everything",
+    curriculum_path(@curriculum) %></li>
+  <% if current_user && current_user.copied_curriculums.include?(@curriculum)%>
+    <li role="presentation" ><%= link_to "Upcoming",
+      curriculum_upcoming_path(@curriculum) %></li>
+    <li role="presentation" ><%= link_to "Progress",
+      curriculum_progress_path(@curriculum) %></li>
+  <% elsif current_user %>
+    <li role="presentation"><%= link_to "Study Curriculum",
+      curriculums_users_path(curriculum_id: @curriculum.id,
+                             user_id: current_user.id),
+                             method: :post %></li>
+  <% end %>
+</ul>
+
 <div class="panel panel-default">
   <div class="panel-body">
     <%= render @resources %>
@@ -22,10 +39,8 @@
 <% end %>
 
 <div class="row">
-
   <div class="col-xs-12">
     <%= render partial: "shared/comment_form", locals:
       { comment_path: url_for([@curriculum, :comments]) } %>
   </div>
-
 </div>
