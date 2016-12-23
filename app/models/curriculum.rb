@@ -7,6 +7,7 @@ class Curriculum < ApplicationRecord
   has_many :resources, through: :curriculums_resources
 
   has_many :feedbacks, as: :feedbackable
+  has_many :comments, as: :commentable
 
   belongs_to :creator, class_name: "User"
 
