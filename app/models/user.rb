@@ -44,4 +44,11 @@ class User < ApplicationRecord
               .paginate(page: page, per_page: 4)
   end
 
+  def completed_resources
+    Resource.completed_by( self.id )
+  end
+
+  def completed?( resource )
+    completed_resources.include? resource
+  end
 end

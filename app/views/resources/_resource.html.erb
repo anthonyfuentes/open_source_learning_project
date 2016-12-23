@@ -30,7 +30,7 @@
         <% if curriculum_id = (session[:curriculum_id] || (params[:user_id] && @curriculum)) %>
           <%= curriculum_resource_toggle_link(curriculum_id, resource.id) %>
         <% elsif @curriculum && current_user %>
-          <%= mark_complete_button( resource.id ) %>
+          <%= mark_complete_button( resource ) %>
         <% end %>
 
 

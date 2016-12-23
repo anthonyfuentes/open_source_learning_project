@@ -34,6 +34,10 @@ class Resource < ApplicationRecord
     .where.not(feedbacks: { user_id: user.id })
   end
 
+  def self.completed_by( user_id )
+    left_outer_joins(:feedbacks)
+    .where(feedbacks: { user_id: user_id })
+  end
 end
 
 Resource.import force: true
