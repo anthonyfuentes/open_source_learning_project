@@ -11,14 +11,14 @@ Share learning resources and build curricula!
 3. Build a curriculum based on these resources, providing some structured learning to other users
 4. Keep track of your progress as you go through a curriculum's resources
 5. Search and discover existing resources and curricula from other users. Search by...
-  i. Search terms
-  ii. Categories
-  iii. Tags
+  1. Search terms
+  2. Categories
+  3. Tags
 6. Provide feedback on resources and curricula:
-  i. Approval rating
-  ii. Difficulty
-  iii. Completion Time
-  iv. Comments
+  1. Approval rating
+  2. Difficulty
+  3. Completion Time
+  4. Comments
 
 ## Running OSLP
 
@@ -27,9 +27,9 @@ Share learning resources and build curricula!
 3. Bundle install all gems `$ bundle install`
 4. Install Elasticsearch ([instructions](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-14-04))
 5. Setup database
-  i. `$ rails db:create`
-  ii. `$ rails db:migrate`
-  iii. `$ rails db:seed`
+  1. `$ rails db:create`
+  2. `$ rails db:migrate`
+  3. `$ rails db:seed`
 6. Start a rails server `$ rails s` and enjoy!
 
 ## Technical Overview
