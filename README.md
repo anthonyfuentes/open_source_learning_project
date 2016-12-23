@@ -1,24 +1,33 @@
-# README
+# Open Source Learning Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Share learning resources and build curricula!  
 
-Things you may want to cover:
+[Deployed App](https://peaceful-waters-19907.herokuapp.com/)
 
-* Ruby version
+## Using OSLP
 
-* System dependencies
+1. Sign up for an account
+2. Share learning resources that you found helpful
+3. Build a curriculum based on these resources, providing some structured learning to other users
+4. Keep track of your progress as you go through a curriculum's resources
+5. Search and discover existing resources and curricula from other users. Search by...
+  i. Search terms
+  ii. Categories
+  iii. Tags
+6. Provide feedback on resources and curricula:
+  i. Approval rating
+  ii. Difficulty
+  iii. Completion Time
+  iv. Comments
 
-* Configuration
+## Running OSLP
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Fork this repo
+2. Clone it to your machine
+3. Bundle install all gems `$ bundle install`
+4. Install Elasticsearch [instructions](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-14-04]
+5. Setup database
+  i. `$ rails db:create`
+  ii. `$ rails db:migrate`
+  iii. `$ rails db:seed`
+6. Start a rails server `$ rails s` and enjoy!
