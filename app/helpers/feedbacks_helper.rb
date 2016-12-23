@@ -4,7 +4,7 @@ module FeedbacksHelper
   def display_time(feedbackable)
     completion_time = feedbackable.attribute_average(:completion_minutes)
 
-    return "No Completion Time Info" if feedbackable.feedbacks.empty?
+    return "Time to Complete\nNot Yet Rated" if feedbackable.feedbacks.empty?
 
     if completion_time < 60
       "~#{completion_time} mins"
