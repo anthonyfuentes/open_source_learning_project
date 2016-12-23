@@ -62,31 +62,18 @@
 
 </div>
 
-<div class="panel panel-default">
-
-  <div class="panel-body">
-
-    <div class="row">
-
-      <div class="col-xs-8">
-
-        <% @resource.tags.each do |tag| %>
-
-          <%= tag.name %>
-
-        <% end %>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
 <% @resource.comments.each do |comment| %>
   <%= render partial: "shared/comment", locals: { comment: comment } %>
 <% end %>
 
-<%= render partial: "shared/comment_form", locals:
-  { comment_path: url_for([@resource, :comments]) } %>
+<div class="row">
+
+  <div class="col-xs-1">
+  </div>
+
+  <div class="col-xs-11">
+    <%= render partial: "shared/comment_form", locals:
+      { comment_path: url_for([@resource, :comments]) } %>
+  </div>
+
+</div>
