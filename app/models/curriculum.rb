@@ -24,5 +24,9 @@ class Curriculum < ApplicationRecord
     creator.username if creator
   end
 
+  def user
+    creator
+  end
+
 end
 Curriculum.import force: true
