@@ -32,7 +32,6 @@ class CurriculumsController < ApplicationController
       @curriculums = @curriculums.paginate(page: params[:page],
                                            per_page: 10)
       if @curriculums.empty?
-        flash.now[:danger] = "no results"
         @curriculums = @curriculums.paginate(page: params[:page],
                                              per_page: 10)
       end
