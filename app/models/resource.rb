@@ -29,6 +29,11 @@ class Resource < ApplicationRecord
     links.first.url unless links.empty?
   end
 
+  scope :without_feedback,
+  ->(user) do left_outer_joins(:feedbacks)
+    .where.not(feedbacks: { user_id: user.id })
+  end
+
 end
 
 Resource.import force: true

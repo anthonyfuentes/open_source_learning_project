@@ -49,12 +49,12 @@
 
 
 <ul class="nav nav-tabs tab-box-top">
-  <li role="presentation" class="active"><%= link_to "Everything",
+  <li role="presentation"><%= link_to "Everything",
       curriculum_path(@curriculum) %></li>
   <% if current_user && current_user.copied_curriculums.include?(@curriculum)%>
-    <li role="presentation" ><%= link_to "Upcoming",
+    <li role="presentation"><%= link_to "Upcoming",
       curriculum_upcoming_path(@curriculum) %></li>
-    <li role="presentation" ><%= link_to "Progress",
+    <li role="presentation" class="active"><%= link_to "Progress",
       curriculum_progress_path(@curriculum) %></li>
   <% elsif current_user %>
     <!-- TODO: fix broken link -->
