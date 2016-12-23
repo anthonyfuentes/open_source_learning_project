@@ -14,4 +14,9 @@
 
   <%= delete_curriculum_link(@curriculum) %>
 
+  <!-- TODO extract css -->
+  <div style="padding-top: 20px">
+    <%= render @curriculum.resources %>
+  </div>
+
 <% end %>
