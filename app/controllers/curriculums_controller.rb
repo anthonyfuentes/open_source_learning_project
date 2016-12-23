@@ -42,7 +42,7 @@ class CurriculumsController < ApplicationController
     session[:curriculum_id] = nil
     @curriculum = Curriculum.find_by(id: params[:id],
                                     creator_id: current_user.id)
-    @resources = @curriculum.resources.paginate(page: params[:page], per_page: 5)
+    @resources = @curriculum.curriculums_resources.order(:order).paginate(page: params[:page], per_page: 5)
   end
 
   def update

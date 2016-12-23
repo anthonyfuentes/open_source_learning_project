@@ -8,7 +8,7 @@
     </div>
 
     <div class="col-xs-4">
-      <p><strong><%# @curriculum.category_name.titleize %></strong></p>
+      <p><strong><%= @curriculum.category_name.titleize %></strong></p>
 
       <!-- TODO: Add curriculum accumulated tags? -->
     </div>
@@ -19,7 +19,7 @@
   <div class="col-xs-4">
     <div class="thumbnail">
       <p><%= @curriculum.attribute_average(:rating) %>/10<br>
-      Score</p>
+        Score</p>
     </div>
   </div>
 
@@ -49,12 +49,12 @@
 
 
 <ul class="nav nav-tabs tab-box-top">
-  <li role="presentation" class="active"><%= link_to "Everything",
-    curriculum_path(@curriculum) %></li>
+  <li role="presentation"><%= link_to "Everything",
+      curriculum_path(@curriculum) %></li>
   <% if current_user && current_user.copied_curriculums.include?(@curriculum)%>
-    <li role="presentation" ><%= link_to "Upcoming",
+    <li role="presentation"><%= link_to "Upcoming",
       curriculum_upcoming_path(@curriculum) %></li>
-    <li role="presentation" ><%= link_to "Progress",
+    <li role="presentation" class="active"><%= link_to "Progress",
       curriculum_progress_path(@curriculum) %></li>
   <% elsif current_user %>
     <!-- TODO: fix broken link -->
@@ -72,7 +72,10 @@
   </div>
 </div>
 
-<% @curriculum.comments.order(created_at: :asc).each do |comment| %>
+
+
+
+<% @curriculum.comments.each do |comment| %>
   <%= render partial: "shared/comment", locals: { comment: comment } %>
 <% end %>
 
@@ -81,6 +84,6 @@
   <div class="col-xs-12">
     <%= render partial: "shared/comment_form", locals:
       { comment_path: url_for([@curriculum, :comments]) } %>
-</div>
+  </div>
 
 </div>

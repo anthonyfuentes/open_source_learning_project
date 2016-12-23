@@ -1,0 +1,2 @@
+module CurriculumcompletedHelper
+end
