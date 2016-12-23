@@ -2,7 +2,7 @@
 module CurriculumsHelper
 
   def add_resources_link(curriculum)
-    if current_user.created?(curriculum)
+    if current_user && current_user.created?(curriculum)
       link_to "Add Resources",
         resources_path(curriculum_id: curriculum.id),
         class: "btn btn-primary"
@@ -10,7 +10,7 @@ module CurriculumsHelper
   end
 
   def edit_curriculum_link(curriculum)
-    if current_user.created?(curriculum)
+    if current_user && current_user.created?(curriculum)
       link_to "Edit",
         edit_user_curriculum_path(current_user.id, curriculum.id),
         class: "btn btn-primary pull-right"
