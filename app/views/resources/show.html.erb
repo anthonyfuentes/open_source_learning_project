@@ -1,74 +1,14 @@
+<%= render partial: 'shared/top_show', locals: { show_object: @resource, tags: @tags } %>
 
-<div class="jumbotron">
-
-  <h1><%= @resource.title.titleize %></h1>
-
-  <div class="row">
-
-    <div class="col-xs-8">
-      <p><%= @resource.subtitle  %></p>
-      <p>Credit: <%= @resource.credits %></p>
-      <% @resource.links.each do |link| %>
-        <a href="<%=link.url%>"><%= link.url %></a>
-      <% end %>
-    </div>
-
-    <div class="col-xs-4">
-      <div>
-        <p>Category: <strong><%= @resource.category_name.titleize %></strong></p>
-        <p>Tags:
-          <% @tags.each do |tag| %>
-            <span id="tag_box">
-              <%= tag.name %>
-            </span>
-          <% end %>
-        </p>
-        <%= link_to "Mark Complete",
-          new_resource_feedback_path(@resource.id),
-          class: 'btn btn-success btn-lg' %>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<div class="row text-center" id="stats-container">
-
-  <div class="col-xs-4">
-    <div class="thumbnail">
-      <%= image_tag("interface.png", class: "icon") %>
-      <p><%= @resource.attribute_average(:rating) %>/10<br>
-        Value Score</p>
-    </div>
-  </div>
-
-  <div class="col-xs-4">
-    <div class="thumbnail">
-      <%= image_tag("circle.png", class: "icon" ) %>
-      <p><%= @resource.attribute_average(:difficulty) %>/10<br>
-        Difficulty Score</p>
-    </div>
-  </div>
-
-  <div class="col-xs-4">
-    <div class="thumbnail">
-      <%= image_tag("clock.png", class: "icon") %>
-      <p><%= display_time(@resource).gsub(/\n/, '<br/>').html_safe %></p>
-    </div>
-  </div>
-
-</div>
-
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-xs-12">
-          <%= @resource.description %>
-        </div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <%= @resource.description %>
       </div>
     </div>
   </div>
+</div>
 
 </div>
 

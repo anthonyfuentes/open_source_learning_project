@@ -13,13 +13,13 @@ class CurriculumsController < ApplicationController
   end
 
   def show
-    session[:curriculum_id] = nil
     @resources = @curriculum.resources.sort_by do |resource|
       resource.curriculums_resources
         .where(curriculum_id: @curriculum.id)
         .first
         .order
     end
+    @tags = aggregate_tags(@resources)
   end
 
   def index
@@ -39,18 +39,13 @@ class CurriculumsController < ApplicationController
   end
 
   def edit
-
+    session[:curriculum_id] = nil
     @curriculum = Curriculum.find_by(id: params[:id],
                                     creator_id: current_user.id)
-
-    session[:curriculum_id] = @curriculum.id
-
-    @resources = @curriculum.curriculums_resources.order(:order).paginate(page: params[:page], per_page: 5)
+    @resources = @curriculum.resources.paginate(page: params[:page], per_page: 5)
   end
 
   def update
-    session[:curriculum_id] = nil
-
     @curriculum = Curriculum.find_by(id: params[:id],
                                      creator_id: current_user.id)
     if @curriculum.update(curriculum_params)
@@ -77,7 +72,7 @@ class CurriculumsController < ApplicationController
   end
 
   def successful_update
-    redirect_to @curriculum
+    redirect_to request.referrer
   end
 
   def failed_update
@@ -112,4 +107,15 @@ class CurriculumsController < ApplicationController
     result = result.joins("FULL JOIN resources_tag ON resources_tag.resource_id = resource.id").where(tag_id: params[:tag_id]) if params[:tag_id] & !params[:tag_id] == ""
     result = result.all unless !params[:category_id] == ""
   end
+
+  def aggregate_tags(resources)
+    tags = []
+    resources.each do |resource|
+      resource.tags.each do |tag|
+        tags << tag
+      end
+    end
+    tags
+  end
+
 end

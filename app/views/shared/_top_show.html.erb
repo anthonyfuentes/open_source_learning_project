@@ -1,0 +1,62 @@
+<div class="jumbotron">
+
+  <h1><%= show_object.title.titleize %></h1>
+
+  <div class="row">
+
+    <div class="col-xs-8">
+      <p><%= show_object.subtitle  %></p>
+      <% if show_object.has_attribute?(:credits) %>
+        <p>Credit: <%= show_object.credits %></p>
+        <% show_object.links.each do |link| %>
+          <a href="<%=link.url%>"><%= link.url %></a>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-xs-4">
+      <div>
+        <p>Category: <strong><%= show_object.category_name.titleize %></strong></p>
+        <p>Tags:
+          <% tags.each do |tag| %>
+            <span id="tag_box">
+              <%= tag.name %>
+            </span>
+          <% end %>
+        </p>
+        <% if show_object.class == Resource %>
+          <%= mark_complete_button(show_object) %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row text-center" id="stats-container">
+
+  <div class="col-xs-4">
+    <div class="thumbnail">
+      <%= image_tag("interface.png", class: "icon") %>
+      <p><%= show_object.attribute_average(:rating) %>/10<br>
+        Value Score</p>
+    </div>
+  </div>
+
+  <div class="col-xs-4">
+    <div class="thumbnail">
+      <%= image_tag("circle.png", class: "icon" ) %>
+      <p><%= show_object.attribute_average(:difficulty) %>/10<br>
+        Difficulty Score</p>
+    </div>
+  </div>
+
+  <div class="col-xs-4">
+    <div class="thumbnail">
+      <%= image_tag("clock.png", class: "icon") %>
+      <p><%= display_time(show_object).gsub(/\n/, '<br/>').html_safe %></p>
+    </div>
+  </div>
+
+</div>
