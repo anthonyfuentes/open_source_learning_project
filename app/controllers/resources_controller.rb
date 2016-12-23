@@ -26,7 +26,6 @@ class ResourcesController < ApplicationController
       @resources = filter_results(@resources)
       @resources = @resources.paginate(page: params[:page], per_page: 10)
       if @resources.empty?
-        flash.now[:danger] = "no results"
         @resources = filter_results(Resource)
         @resources = @resources.paginate(page: params[:page], per_page: 10)
       end
