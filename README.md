@@ -31,3 +31,10 @@ Share learning resources and build curricula!
   ii. `$ rails db:migrate`
   iii. `$ rails db:seed`
 6. Start a rails server `$ rails s` and enjoy!
+
+## Technical Overview
+
+1. Used Elasticsearch for multi-threaded and asynchronous searching
+2. Created complex ActiveRecord queries to determine resource completion
+3. Developed polymorphic models to maintain abstraction in codebase
+4. Emphasized modularity via the thorough use of partials
