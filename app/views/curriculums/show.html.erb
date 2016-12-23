@@ -51,6 +51,7 @@
 <ul class="nav nav-tabs tab-box-top">
   <li role="presentation" class="active"><%= link_to "Everything",
       curriculum_path(@curriculum) %></li>
+<<<<<<< HEAD
   <% if current_user && current_user.copied_curriculums.include?(@curriculum)%>
     <li role="presentation" ><%= link_to "Upcoming",
       curriculum_upcoming_path(@curriculum) %></li>
@@ -62,6 +63,16 @@
       curriculums_users_path(curriculum_id: @curriculum.id,
                              user_id: current_user.id),
                              method: :post %></li>
+=======
+  <% if current_user && current_user.copied_curriculums.include?(@curriculum)%> 
+    <li role="presentation" ><%= link_to 'Upcoming', "#" %></li>
+    <li role="presentation" ><%= link_to 'Progress', "#" %></li>
+  <% else %>
+    <li role="presentation"><%= link_to("Add Curriculum",
+              curriculums_users_path( curriculum_id: @curriculum.id,
+              user_id: current_user.id ),
+              method: :post )%></li>
+>>>>>>> 0df56d80527788541d49c7f85ba8580a089e7d76
   <% end %>
 </ul>
 
