@@ -1,5 +1,5 @@
 
-<!-- <div class="jumbotron">
+<div class="jumbotron">
   <h1><%= @curriculum.title %></h1>
   <div class="row">
     <div class="col-xs-8">
@@ -8,9 +8,9 @@
     </div>
 
     <div class="col-xs-4">
-      <p><strong><%# @curriculum.category_name.titleize %></strong></p>
+      <p><strong><%= @curriculum.category_name.titleize %></strong></p>
 
-       TODO: Add curriculum accumulated tags?
+      <!-- TODO: Add curriculum accumulated tags? -->
     </div>
   </div>
 </div>
@@ -35,14 +35,11 @@
       <p><%= display_time(@curriculum) %></p>
     </div>
   </div>
-
-</div> -->
-<%= render partial: 'shared/top_show', locals: { show_object: @curriculum, tags: @tags } %>
+</div>
 
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
-
       <div class="col-xs-8">
         <%= @curriculum.description %>
       </div>
@@ -50,11 +47,33 @@
   </div>
 </div>
 
+
+<ul class="nav nav-tabs tab-box-top">
+  <li role="presentation"><%= link_to "Everything",
+      curriculum_path(@curriculum) %></li>
+  <% if current_user && current_user.copied_curriculums.include?(@curriculum)%>
+    <li role="presentation" class="active"><%= link_to "Upcoming",
+      curriculum_upcoming_path(@curriculum) %></li>
+    <li role="presentation" ><%= link_to "Progress",
+      curriculum_progress_path(@curriculum) %></li>
+  <% elsif current_user %>
+    <!-- TODO: fix broken link -->
+    <li role="presentation"><%= link_to "Add Curriculum!",
+      curriculums_users_path(curriculum_id: @curriculum.id,
+                             user_id: current_user.id),
+                             method: :post %></li>
+  <% end %>
+</ul>
+
+
 <div class="panel panel-default">
   <div class="panel-body">
     <%= render @resources %>
   </div>
 </div>
+
+
+
 
 <% @curriculum.comments.each do |comment| %>
   <%= render partial: "shared/comment", locals: { comment: comment } %>

@@ -1,20 +1,22 @@
 <div class="jumbotron">
 
-  <h1><%= resource.title.titleize %></h1>
+  <h1><%= show_object.title.titleize %></h1>
 
   <div class="row">
 
     <div class="col-xs-8">
-      <p><%= resource.subtitle  %></p>
-      <p>Credit: <%= resource.credits %></p>
-      <% resource.links.each do |link| %>
-        <a href="<%=link.url%>"><%= link.url %></a>
+      <p><%= show_object.subtitle  %></p>
+      <% if show_object.has_attribute?(:credits) %>
+        <p>Credit: <%= show_object.credits %></p>
+        <% show_object.links.each do |link| %>
+          <a href="<%=link.url%>"><%= link.url %></a>
+        <% end %>
       <% end %>
     </div>
 
     <div class="col-xs-4">
       <div>
-        <p>Category: <strong><%= resource.category_name.titleize %></strong></p>
+        <p>Category: <strong><%= show_object.category_name.titleize %></strong></p>
         <p>Tags:
           <% tags.each do |tag| %>
             <span id="tag_box">
@@ -22,9 +24,9 @@
             </span>
           <% end %>
         </p>
-        <%= link_to "Mark Complete",
-          new_resource_feedback_path(resource.id),
-          class: 'btn btn-success btn-lg' %>
+        <% if show_object.class == Resource %>
+          <%= mark_complete_button(show_object) %>
+        <% end %>
       </div>
     </div>
 
@@ -37,7 +39,7 @@
   <div class="col-xs-4">
     <div class="thumbnail">
       <%= image_tag("interface.png", class: "icon") %>
-      <p><%= resource.attribute_average(:rating) %>/10<br>
+      <p><%= show_object.attribute_average(:rating) %>/10<br>
         Value Score</p>
     </div>
   </div>
@@ -45,7 +47,7 @@
   <div class="col-xs-4">
     <div class="thumbnail">
       <%= image_tag("circle.png", class: "icon" ) %>
-      <p><%= resource.attribute_average(:difficulty) %>/10<br>
+      <p><%= show_object.attribute_average(:difficulty) %>/10<br>
         Difficulty Score</p>
     </div>
   </div>
@@ -53,7 +55,7 @@
   <div class="col-xs-4">
     <div class="thumbnail">
       <%= image_tag("clock.png", class: "icon") %>
-      <p><%= display_time(resource).gsub(/\n/, '<br/>').html_safe %></p>
+      <p><%= display_time(show_object).gsub(/\n/, '<br/>').html_safe %></p>
     </div>
   </div>
 

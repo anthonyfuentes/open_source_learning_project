@@ -1,4 +1,4 @@
-<%= render partial: 'shared/top_show', locals: { resource: @resource, tags: @tags } %>
+<%= render partial: 'shared/top_show', locals: { show_object: @resource, tags: @tags } %>
 
 <div class="panel panel-default">
   <div class="panel-body">
@@ -12,7 +12,7 @@
 
 </div>
 
-<% @resource.comments.each do |comment| %>
+<% @resource.comments.order(created_at: :asc).each do |comment| %>
   <%= render partial: "shared/comment", locals: { comment: comment } %>
 <% end %>
 

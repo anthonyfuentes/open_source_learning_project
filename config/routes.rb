@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :curriculums, only: [:new, :create, :index, :show] do
     resources :feedbacks, only: [:new, :create]
     resources :comments, only: [:create]
+    get 'upcoming', to: 'curriculum_upcoming#index'
+    get 'progress', to: 'curriculum_progress#index'
   end
 
   resources :curriculums_resources, only: [:create, :destroy]

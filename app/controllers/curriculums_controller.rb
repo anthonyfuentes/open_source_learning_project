@@ -19,6 +19,7 @@ class CurriculumsController < ApplicationController
         .first
         .order
     end
+    @tags = aggregate_tags(@resources)
   end
 
   def index
@@ -107,4 +108,15 @@ class CurriculumsController < ApplicationController
     result = result.joins("FULL JOIN resources_tag ON resources_tag.resource_id = resource.id").where(tag_id: params[:tag_id]) if params[:tag_id] & !params[:tag_id] == ""
     result = result.all unless !params[:category_id] == ""
   end
+
+  def aggregate_tags(resources)
+    tags = []
+    resources.each do |resource|
+      resource.tags.each do |tag|
+        tags << tag
+      end
+    end
+    tags
+  end
+
 end

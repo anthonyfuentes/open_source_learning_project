@@ -1,0 +1,2 @@
+module CurriculumupcomingHelper
+end
