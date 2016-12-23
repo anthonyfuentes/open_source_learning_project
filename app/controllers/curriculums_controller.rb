@@ -13,7 +13,6 @@ class CurriculumsController < ApplicationController
   end
 
   def show
-    session[:curriculum_id] = nil
   end
 
   def index
@@ -31,6 +30,7 @@ class CurriculumsController < ApplicationController
   end
 
   def edit
+    session[:curriculum_id] = nil
     @curriculum = Curriculum.find_by(id: params[:id],
                                     creator_id: current_user.id)
   end
