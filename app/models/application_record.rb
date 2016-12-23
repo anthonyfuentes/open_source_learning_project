@@ -6,7 +6,7 @@ class ApplicationRecord < ActiveRecord::Base
 
     Feedback.where("feedbackable_id = #{self.id} and
                     feedbackable_type = '#{self.class.name}'")
-                   .average(attribute).to_f
+                   .average(attribute).to_f.round(1)
   end
 
 end
