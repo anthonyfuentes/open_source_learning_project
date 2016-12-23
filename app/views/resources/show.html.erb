@@ -1,9 +1,11 @@
 
 <%#= render partial: "resources/resource", locals: { resource: @resource } %>
 <div class="jumbotron">
-  <h1><%= @resource.title %></h1>
+
   <div class="row">
+
     <div class="col-xs-8">
+      <h1><%= @resource.title %></h1>
       <p><%= @resource.subtitle  %></p>
       <p>Credit: <%= @resource.credits %></p>
       <% @resource.links.each do |link| %>
@@ -12,12 +14,14 @@
     </div>
 
     <div class="col-xs-4">
-      <p><strong><%= @resource.category.name %></strong></p>
-      <% @resource.tags.each do |tag| %>
-        <%= tag.name %>
+      <p>Category: <strong><%= @resource.category.name %></strong></p>
+      <% @tags.each do |tag| %>
+      <%= tag.name %>
       <% end %>
     </div>
+
   </div>
+
 </div>
 
 <div class="row">
@@ -25,44 +29,35 @@
     <div class="thumbnail">
       <p><%= @resource.attribute_average(:rating) %>/10<br>
         Score</p>
-    </div>
-  </div>
-
-  <div class="col-xs-4">
-    <div class="thumbnail">
-      <p><%= @resource.attribute_average(:difficulty) %>/10<br>
-      Difficulty</p>
-    </div>
-  </div>
-
-  <div class="col-xs-4">
-    <div class="thumbnail">
-      <p><%= display_time(@resource) %></p>
-    </div>
-  </div>
-
-</div>
-
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="row">
-
-      <div class="col-xs-8">
-        <%= @resource.description %>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-xs-8">
-        <% @resource.tags.each do |tag| %>
-          <%= tag.name %>
-        <% end %>
+    <div class="col-xs-4">
+      <div class="thumbnail">
+        <p><%= @resource.attribute_average(:difficulty) %>/10<br>
+          Difficulty</p>
+        </div>
+      </div>
+
+      <div class="col-xs-4">
+        <div class="thumbnail">
+          <p><%= display_time(@resource) %></p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-12">
+            <%= @resource.description %>
+          </div>
+        </div>
       </div>
     </div>
+    
+
   </div>
+
 </div>
