@@ -13,18 +13,27 @@ class CurriculumsController < ApplicationController
   end
 
   def show
+    @resources = @curriculum.resources.sort_by do |resource|
+      resource.curriculums_resources
+        .where(curriculum_id: @curriculum.id)
+        .first
+        .order
+    end
   end
 
   def index
     if params[:q].nil?
-      @curriculums = Curriculum.paginate(page: params[:page], per_page: 10).all
+      @curriculums = Curriculum.paginate(page: params[:page],
+                                         per_page: 10).all
     else
       @curriculums = Curriculum.search params[:q]
       @curriculums = @curriculums.records
-      @curriculums = @curriculums.paginate(page: params[:page], per_page: 10)
+      @curriculums = @curriculums.paginate(page: params[:page],
+                                           per_page: 10)
       if @curriculums.empty?
         flash.now[:danger] = "no results"
-        @curriculums = @curriculums.paginate(page: params[:page], per_page: 10)
+        @curriculums = @curriculums.paginate(page: params[:page],
+                                             per_page: 10)
       end
     end
   end
@@ -33,6 +42,7 @@ class CurriculumsController < ApplicationController
     session[:curriculum_id] = nil
     @curriculum = Curriculum.find_by(id: params[:id],
                                     creator_id: current_user.id)
+    @resources = @curriculum.resources.paginate(page: params[:page], per_page: 5)
   end
 
   def update
@@ -62,7 +72,7 @@ class CurriculumsController < ApplicationController
   end
 
   def successful_update
-    redirect_to requrest.referrer
+    redirect_to request.referrer
   end
 
   def failed_update
@@ -85,8 +95,11 @@ class CurriculumsController < ApplicationController
   end
 
   def curriculum_params
-    params.require(:curriculum).permit(:title, :subtitle,
-                                       :description)
+    params.require(:curriculum).permit(:title,
+                                       :subtitle,
+                                       :description,
+                                        curriculums_resources_attributes:
+                                        [:id, :order])
   end
 
   def filter_results(result)

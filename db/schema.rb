@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20161223040052) do
     t.integer  "resource_id",   null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "order"
     t.index ["curriculum_id", "resource_id"], name: "index_curriculums_resources_on_curriculum_id_and_resource_id", unique: true, using: :btree
     t.index ["resource_id", "curriculum_id"], name: "index_curriculums_resources_on_resource_id_and_curriculum_id", using: :btree
   end
