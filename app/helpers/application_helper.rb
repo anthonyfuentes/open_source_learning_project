@@ -5,10 +5,10 @@ module ApplicationHelper
     return "Time to Complete\nNot Yet Rated" if feedbackable.feedbacks.empty?
 
     if completion_time < 60
-      "~#{completion_time} mins\nAverage Completion Time"
+      "~#{completion_time.round(1)} mins\nAverage Completion Time"
     else
       completion_time /= 60
-      "~#{completion_time} hrs\nAverage Completion Time"
+      "~#{completion_time.round(1)} hrs\nAverage Completion Time"
     end
   end
 
