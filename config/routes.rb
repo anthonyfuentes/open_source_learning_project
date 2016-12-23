@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     resources :feedbacks, only: [:new, :create]
   end
 
-  resources :curriculums, only: [:new, :create, :index, :show]
+  resources :curriculums, only: [:new, :create, :index, :show] do
+    resources :feedbacks, only: [:new, :create]
+  end
+  resources :comments, only: [:create]
   resources :curriculums_resources, only: [:create, :destroy]
 
 end
