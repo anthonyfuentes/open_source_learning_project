@@ -48,6 +48,9 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bonsai-elasticsearch-rails (0.2.0)
+      elasticsearch-model (~> 0)
+      elasticsearch-rails (~> 0)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -267,6 +270,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bonsai-elasticsearch-rails
   bootstrap-sass (~> 3.3.6)
   bullet
   byebug
