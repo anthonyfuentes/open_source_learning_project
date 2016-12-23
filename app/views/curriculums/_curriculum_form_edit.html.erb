@@ -1,0 +1,20 @@
+
+<%= simple_form_for [current_user, @curriculum],
+                                  wrapper: :vertical_form do |f| %>
+  <%= f.input :title,
+    placeholder: "e.g. Astronomy 101" %>
+  <%= f.input :subtitle,
+    placeholder: "e.g. Learn the basics of the universe." %>
+  <%= f.input :description,
+    placeholder: "e.g. Know thyself and you shall know the secrets of all the universe." %>
+
+  <%= f.submit class: "btn btn-success" %>
+
+  <% if current_user.created?(@curriculum) %>
+    <%= link_to "Delete",
+      user_curriculum_path(current_user.id, @curriculum.id),
+      class: "btn btn-danger",
+      method: :delete %>
+  <% end %>
+
+<% end %>

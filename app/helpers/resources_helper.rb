@@ -15,7 +15,9 @@ module ResourcesHelper
 
   def resource_url( resource )
     if resource.url
-      link_to "Go to Resource", resource.url, class: "btn btn-primary pull-right"
+      link_to "Go to Resource",
+        resource.url,
+        class: "btn btn-primary pull-right"
     else
       "No link found for this resource."
     end

@@ -1,0 +1,20 @@
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <h1>Edit <%= @curriculum.title %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <%= render 'curriculum_form_edit' %>
+  </div>
+</div>
+
+
+<!-- TODO extract css -->
+<div class="row" style="margin-top: 20px">
+  <div class="col-xs-8 col-xs-offset-2">
+    <%= render @curriculum.resources %>
+  </div>
+</div>

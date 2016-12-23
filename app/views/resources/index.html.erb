@@ -11,7 +11,7 @@
   <div class="col-xs-1">
     <% if curriculum %>
       <%= link_to "Finish",
-        curriculum_path(curriculum),
+        edit_user_curriculum_path(current_user.id, session[:curriculum_id]),
         class: 'btn btn-success btn-lg' %>
     <% end %>
   </div>

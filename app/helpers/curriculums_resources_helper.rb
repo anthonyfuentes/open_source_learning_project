@@ -13,7 +13,7 @@ module CurriculumsResourcesHelper
   private
 
     def add_link( curriculum_id, resource_id )
-      link_to("Add to #{Curriculum.find_by(id: curriculum_id).title}",
+      link_to("Add",
               curriculums_resources_path( curriculum_id: curriculum_id,
               resource_id: resource_id ),
               class: 'btn btn-success',
@@ -21,7 +21,7 @@ module CurriculumsResourcesHelper
     end
 
     def remove_link( curriculum_resource )
-      link_to("Remove from #{curriculum_resource.curriculum_title}",
+      link_to("Remove",
               curriculums_resource_path( curriculum_resource ),
               class: 'btn btn-danger',
               method: :delete )

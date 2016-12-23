@@ -19,6 +19,10 @@ class User < ApplicationRecord
   has_many :feedbacks, dependent: :nullify
 
 
+  def created?(curriculum)
+    id == curriculum.creator_id
+  end
+
   def confrimation_required?
     false
   end
