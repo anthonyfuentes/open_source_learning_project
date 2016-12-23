@@ -23,6 +23,9 @@
             </span>
           <% end %>
         </p>
+        <%= link_to "Mark Complete",
+          resource_feedbacks_path(@resource.id),
+          class: 'btn btn-success btn-lg' %>
       </div>
     </div>
 
