@@ -1,3 +1,4 @@
+
 module FeedbacksHelper
 
   def display_time(feedbackable)

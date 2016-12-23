@@ -1,10 +1,15 @@
 class CommentsController < ApplicationController
+
   def create
-    @comment = Comment.new(comment_params)
+    @commentable = extract_commentable
+    fail
   end
 
   private
-  def comment_params
-    params.require(:comment).premit(:commentable_id, :commentable_type, :body)
-  end
+
+    def extract_commentable
+      resource, id = request.path.split('/')[1,2]
+      resource.singularize.classify.constantize.find(id)
+    end
+
 end
