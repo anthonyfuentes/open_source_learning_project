@@ -25,7 +25,11 @@ class Curriculum < ApplicationRecord
   end
 
   def category_name
-    resources.first.category.name unless resources.empty?
+    if resources.empty?
+      return "No category"
+    else
+      resources.first.category.name
+    end
   end
 
 end

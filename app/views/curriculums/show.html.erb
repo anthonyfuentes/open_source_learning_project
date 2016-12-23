@@ -1,4 +1,5 @@
 
+
 <div class="jumbotron">
   <h1><%= @curriculum.title %></h1>
   <div class="row">
@@ -37,8 +38,7 @@
   </div>
 
 </div>
-
-
+ 
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
@@ -50,11 +50,28 @@
   </div>
 </div>
 
+
+<ul class="nav nav-tabs tab-box-top">
+  <li role="presentation" class="active"><%= link_to 'Everything',
+      curriculum_path(@curriculum) %></li>
+  <% if current_user && current_user.copied_curriculums.include?(@curriculum)%> 
+    <li role="presentation" ><%= link_to 'Upcoming', "#" %></li>
+    <li role="presentation" ><%= link_to 'Progress', "#" %></li>
+  <% else %>
+    <li role="presentation"><%= link_to 'Add Curriculum!',
+      copy_curriculum_link(@curriculum.id) %></li>
+  <% end %>
+</ul>
+
+
 <div class="panel panel-default">
   <div class="panel-body">
     <%= render @resources %>
   </div>
 </div>
+
+ 
+
 
 <% @curriculum.comments.each do |comment| %>
   <%= render partial: "shared/comment", locals: { comment: comment } %>

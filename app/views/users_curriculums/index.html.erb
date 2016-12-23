@@ -17,6 +17,15 @@
 
     <% if @user_curriculums.empty? %>
       <h3 class="text-muted">This is where all of the curriculums you create will appear :D</h3>
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-xs-12">
+          <%= link_to "Create a Curriculum", new_curriculum_path,
+            class: 'btn btn-success btn-md pull-right btn-user-profile' %>
+      
+            <%= link_to "Find a Curriculum", curriculums_path,
+            class: 'btn btn-success btn-md pull-right btn-user-profile' %>
+        </div>
+      </div>
     <% else %>
       <div class="row" style="margin-bottom: 15px">
         <div class="col-xs-12">

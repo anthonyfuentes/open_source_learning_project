@@ -22,7 +22,7 @@
 
     <% index = 0 %>
     <%= f.simple_fields_for :curriculums_resources do |cr_fields| %>
-      <%= render 'resources/resource', resource: @resources[index],
+      <%= render 'resources/resource', resource: cr_fields.object.resource,
         order_field: (cr_fields.input :order,
                       input_html: { min: 1,
                                     max: @resources.length }) %>

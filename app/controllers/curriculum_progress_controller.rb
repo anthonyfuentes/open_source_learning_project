@@ -1,0 +1,2 @@
+class CurriculumProgressController < ApplicationController
+end
