@@ -72,7 +72,7 @@
 
 </div>
 
-<% @resource.comments.each do |comment| %>
+<% @resource.comments.order(created_at: :asc).each do |comment| %>
   <%= render partial: "shared/comment", locals: { comment: comment } %>
 <% end %>
 
