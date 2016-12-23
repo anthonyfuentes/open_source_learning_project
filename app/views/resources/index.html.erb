@@ -2,21 +2,18 @@
 <% if curriculum = Curriculum.find_by(id: session[:curriculum_id]) %>
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
-      <h2>Editing <%= curriculum.title %></h2>
+      <h2 class="inline-headers">Editing <%= curriculum.title %>...</h2>
+      <% if curriculum %>
+      <%= link_to "Finish Creating #{curriculum.title}",
+      curriculum_path(session[:curriculum_id]),
+      class: 'btn btn-success btn' %>
+      <% end %>
     </div>
   </div>
 <% end %>
 
 <div class="row">
-  <div class="col-xs-1">
-    <% if curriculum %>
-      <%= link_to "Finish",
-        edit_user_curriculum_path(current_user.id, session[:curriculum_id]),
-        class: 'btn btn-success btn-lg' %>
-    <% end %>
-  </div>
-
-  <div class="col-xs-10">
+  <div class="col-xs-10 col-xs-offset-1">
     <div class="btn-group" role="group">
       <%= link_to 'Resources', resources_path,
         class: 'btn btn-default active' %>

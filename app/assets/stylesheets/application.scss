@@ -57,7 +57,16 @@
   left: 0;
 }
 
+
 /* comments */
 .comment {
   background-color: #EEE;
+}
+.inline-headers h2, .inline-headers h4 {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.btn-group {
+  margin-top: 15px;
 }
