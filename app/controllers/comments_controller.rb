@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   def create
     @commentable = extract_commentable
     @comment = @commentable.comments.build(comment_params)
+    @comment.user = current_user
     @comment.save ? successful_create : failed_create
   end
 

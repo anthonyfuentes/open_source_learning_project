@@ -6,14 +6,15 @@
 
   <div class="col-xs-11">
 
-    <div class="panel panel-default">
+    <div class="panel panel-default comment">
 
       <div class="panel-body">
 
         <div class="row">
 
           <div class="col-xs-10">
-            <%= comment.body %>
+            <p><strong><%= comment.display_author %>:</strong></p>
+            <p><%= comment.body %></p>
           </div>
 
         </div>
