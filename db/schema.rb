@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222190925) do
+ActiveRecord::Schema.define(version: 20161223040052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 20161222190925) do
     t.datetime "updated_at",    null: false
     t.index ["curriculum_id", "resource_id"], name: "index_curriculums_resources_on_curriculum_id_and_resource_id", unique: true, using: :btree
     t.index ["resource_id", "curriculum_id"], name: "index_curriculums_resources_on_resource_id_and_curriculum_id", using: :btree
+  end
+
+  create_table "curriculums_users", force: :cascade do |t|
+    t.integer  "curriculum_id", null: false
+    t.integer  "user_id",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["curriculum_id", "user_id"], name: "index_curriculums_users_on_curriculum_id_and_user_id", unique: true, using: :btree
+    t.index ["user_id", "curriculum_id"], name: "index_curriculums_users_on_user_id_and_curriculum_id", using: :btree
   end
 
   create_table "feedbacks", force: :cascade do |t|

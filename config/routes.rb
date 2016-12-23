@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get "shared", to: "shared_resources#index"
     get "curriculums", to: "users_curriculums#index"
     resources :curriculums, only: [:edit, :update, :destroy]
+
   end
 
   resources :resources, only: [:new, :create, :show, :index] do
@@ -20,5 +21,6 @@ Rails.application.routes.draw do
   end
   resources :comments, only: [:create]
   resources :curriculums_resources, only: [:create, :destroy]
+  resources :curriculums_users, only: [:create, :destroy]
 
 end
