@@ -38,6 +38,11 @@ class Resource < ApplicationRecord
     left_outer_joins(:feedbacks)
     .where(feedbacks: { user_id: user_id })
   end
+
+  def user
+    submitter
+  end
+
 end
 
 Resource.import force: true

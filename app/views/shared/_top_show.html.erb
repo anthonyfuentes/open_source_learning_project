@@ -12,6 +12,7 @@
           <a href="<%=link.url%>"><%= link.url %></a>
         <% end %>
       <% end %>
+      <p>by <%= link_to "#{show_object.user.username}", show_object.user %></p>
     </div>
 
     <div class="col-xs-4">
