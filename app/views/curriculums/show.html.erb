@@ -58,8 +58,10 @@
     <li role="presentation" ><%= link_to 'Upcoming', "#" %></li>
     <li role="presentation" ><%= link_to 'Progress', "#" %></li>
   <% else %>
-    <li role="presentation"><%= link_to 'Add Curriculum!',
-      copy_curriculum_link(@curriculum.id) %></li>
+    <li role="presentation"><%= link_to("Add Curriculum",
+              curriculums_users_path( curriculum_id: @curriculum.id,
+              user_id: current_user.id ),
+              method: :post )%></li>
   <% end %>
 </ul>
 
