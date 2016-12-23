@@ -1,3 +1,4 @@
+
 module ResourcesHelper
 
   def first_link(resource)

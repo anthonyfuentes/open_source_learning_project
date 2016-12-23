@@ -8,6 +8,7 @@
   > links
   > index button
   > user profile button
+  > navbar form
 */
 
 /* flash */
@@ -47,4 +48,10 @@
 /* user profile btn */
 .btn-user-profile {
   margin: 10px 0 0 0;
+}
+
+/* navbar search */
+.navbar-form-low{
+  position: absolute;
+  left: 0;
 }
