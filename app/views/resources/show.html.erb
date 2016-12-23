@@ -15,7 +15,7 @@
 
     <div class="col-xs-4">
       <div>
-        <p>Category: <strong><%= @resource.category.name %></strong></p>
+        <p>Category: <strong><%= @resource.category_name.titleize %></strong></p>
         <p>Tags:
           <% @tags.each do |tag| %>
             <span id="tag_box">
