@@ -1,3 +1,31 @@
 // Place all the styles related to the resources controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#tag_box {
+  border: 1px solid gray;
+  margin: 2px;
+  padding: 5px;
+  border-radius: 0px 15px;
+}
+
+#category_column {
+  position: relative;
+
+  .category_block {
+    margin-top: 20%;
+    margin-bottom: 20%;
+  }
+}
+
+
+#stats-container {
+  .icon {
+    height: 150px;
+  }
+}
+
+.footer {
+  margin-top: 100px;
+  text-align: center;
+}
