@@ -16,7 +16,9 @@
 
   <!-- TODO extract css -->
   <div style="padding-top: 20px">
-    <%= render @curriculum.resources %>
+    <%= will_paginate @resources %>
+    <%= render @resources %>
+    <%= will_paginate @resources %>
   </div>
 
 <% end %>

@@ -17,14 +17,17 @@ class CurriculumsController < ApplicationController
 
   def index
     if params[:q].nil?
-      @curriculums = Curriculum.paginate(page: params[:page], per_page: 10).all
+      @curriculums = Curriculum.paginate(page: params[:page],
+                                         per_page: 10).all
     else
       @curriculums = Curriculum.search params[:q]
       @curriculums = @curriculums.records
-      @curriculums = @curriculums.paginate(page: params[:page], per_page: 10)
+      @curriculums = @curriculums.paginate(page: params[:page],
+                                           per_page: 10)
       if @curriculums.empty?
         flash.now[:danger] = "no results"
-        @curriculums = @curriculums.paginate(page: params[:page], per_page: 10)
+        @curriculums = @curriculums.paginate(page: params[:page],
+                                             per_page: 10)
       end
     end
   end
@@ -33,6 +36,8 @@ class CurriculumsController < ApplicationController
     session[:curriculum_id] = nil
     @curriculum = Curriculum.find_by(id: params[:id],
                                     creator_id: current_user.id)
+    @resources = @curriculum.resources.paginate(page: params[:page],
+                                               per_page: 5)
   end
 
   def update
@@ -62,7 +67,7 @@ class CurriculumsController < ApplicationController
   end
 
   def successful_update
-    redirect_to requrest.referrer
+    redirect_to request.referrer
   end
 
   def failed_update
