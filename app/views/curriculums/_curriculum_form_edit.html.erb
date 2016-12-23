@@ -10,11 +10,8 @@
 
   <%= f.submit class: "btn btn-success" %>
 
-  <% if current_user.created?(@curriculum) %>
-    <%= link_to "Delete",
-      user_curriculum_path(current_user.id, @curriculum.id),
-      class: "btn btn-danger",
-      method: :delete %>
-  <% end %>
+  <%= add_resources_link(@curriculum) %>
+
+  <%= delete_curriculum_link(@curriculum) %>
 
 <% end %>
