@@ -13,6 +13,8 @@ class Curriculum < ApplicationRecord
 
   validates :title, :subtitle, presence: true, length: { minimum: 4 }
 
+  accepts_nested_attributes_for :curriculums_resources
+
   def creator_name
     creator.username
   end

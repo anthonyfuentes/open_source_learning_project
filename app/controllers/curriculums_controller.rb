@@ -13,6 +13,12 @@ class CurriculumsController < ApplicationController
   end
 
   def show
+    @resources = @curriculum.resources.sort_by do |resource|
+      resource.curriculums_resources
+        .where(curriculum_id: @curriculum.id)
+        .first
+        .order
+    end
   end
 
   def index
@@ -36,8 +42,14 @@ class CurriculumsController < ApplicationController
     session[:curriculum_id] = nil
     @curriculum = Curriculum.find_by(id: params[:id],
                                     creator_id: current_user.id)
-    @resources = @curriculum.resources.paginate(page: params[:page],
-                                               per_page: 5)
+    @resources = @curriculum.resources.sort_by do |resource|
+      resource.curriculums_resources
+        .where(curriculum_id: @curriculum.id)
+        .first
+        .order
+    end
+    @resources = Resource.where(id: @resources.map(&:id))
+      .paginate(page: params[:page], per_page: 5)
   end
 
   def update
@@ -90,8 +102,11 @@ class CurriculumsController < ApplicationController
   end
 
   def curriculum_params
-    params.require(:curriculum).permit(:title, :subtitle,
-                                       :description)
+    params.require(:curriculum).permit(:title,
+                                       :subtitle,
+                                       :description,
+                                        curriculums_resources_attributes:
+                                        [:id, :order])
   end
 
   def filter_results(result)
