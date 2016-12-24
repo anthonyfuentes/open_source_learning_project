@@ -10,7 +10,7 @@
         <% end %>
         <h3><%= link_to resource.title.titleize, resource_path(resource) %></h3>
         <p><%= resource.subtitle %></p>
-        <p><i>by <%= resource.submitter.username %></i></p>
+        <p><i>submitted by: <%= resource.submitter.username %></i></p>
       </div>
 
       <div class="col-xs-4">
@@ -27,10 +27,10 @@
         </div>
 
         <!-- params[:id] == curriculum id on curriculum edit page -->
-        <% if curriculum_id = (cookies.signed[:curriculum_id] || (@curriculum.id if @curriculum)) %>
+        <% if curriculum_id = (cookies.signed[:curriculum_id] || (@curriculum.id if @curriculum && params[:user_id])) %>
           <%= curriculum_resource_toggle_link(curriculum_id, resource.id) %>
         <% elsif @curriculum && current_user %>
-          <%= mark_complete_button( resource ) %>
+          <%= mark_complete_button(resource) %>
         <% end %>
 
         <%= resource_url(resource) %>

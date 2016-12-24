@@ -35,6 +35,10 @@ class Resource < ApplicationRecord
     links.first.url unless links.empty?
   end
 
+  def no_feedback?
+    feedbacks.empty?
+  end
+
   def user
     submitter
   end

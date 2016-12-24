@@ -10,6 +10,18 @@ module CurriculumsResourcesHelper
     end
   end
 
+  def display_time(feedbackable)
+    completion_time = feedbackable.attribute_average(:completion_minutes)
+    if feedbackable.no_feedback?
+      "No Time Data \nYet"
+    elsif completion_time < 60
+      "~#{completion_time.round(1)} mins\non Average"
+    else
+      completion_time /= 60
+      "~#{completion_time.round(1)} hrs\non Average"
+    end
+  end
+
   private
 
     def add_link(curriculum_id, resource_id)

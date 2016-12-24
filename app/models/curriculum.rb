@@ -20,10 +20,15 @@ class Curriculum < ApplicationRecord
 
   accepts_nested_attributes_for :curriculums_resources
 
+  def no_feedback?
+    feedbacks.empty?
+  end
+
   def creator_name
     creator.username if creator
   end
 
+  # TODO delete
   def user
     creator
   end

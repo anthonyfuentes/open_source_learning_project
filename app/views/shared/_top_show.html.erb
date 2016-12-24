@@ -1,38 +1,35 @@
+
 <div class="jumbotron">
-
   <h1><%= show_object.title.titleize %></h1>
-
   <div class="row">
 
     <div class="col-xs-8">
-      <p><%= show_object.subtitle  %></p>
+      <p><%= show_object.subtitle %></p>
       <% if show_object.has_attribute?(:credits) %>
         <p>Credit: <%= show_object.credits %></p>
         <% show_object.links.each do |link| %>
-          <a href="<%=link.url%>"><%= link.url %></a>
+          <a href="<%= link.url %>"><%= link.url %></a>
         <% end %>
       <% end %>
-      <p>by <%= link_to "#{show_object.user.username}", show_object.user %></p>
+      <p>submitted by: <%= link_to "#{show_object.user.username}", show_object.user %></p>
     </div>
 
     <div class="col-xs-4">
       <div>
         <p>Category: <strong><%= show_object.category_name.titleize %></strong></p>
         <p>Tags:
+        <!-- TODO render tags -->
           <% tags.each do |tag| %>
             <span id="tag_box">
               <%= tag.name %>
             </span>
           <% end %>
         </p>
-        <% if show_object.class == Resource %>
-          <%= mark_complete_button(show_object) %>
-        <% end %>
+        <%= mark_complete_button(show_object) %>
       </div>
     </div>
 
   </div>
-
 </div>
 
 <div class="row text-center" id="stats-container">

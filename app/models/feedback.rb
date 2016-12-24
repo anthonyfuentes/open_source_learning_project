@@ -6,5 +6,7 @@ class Feedback < ApplicationRecord
   validates :rating, presence: true
   validates :difficulty, presence: true
 
-  validates :user_id, uniqueness: { scope: [:feedbackable_type, :feedbackable_id] }
+  validates :user_id,
+    uniqueness: {
+      scope: [:feedbackable_type, :feedbackable_id] }
 end

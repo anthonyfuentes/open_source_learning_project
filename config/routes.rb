@@ -13,12 +13,11 @@ Rails.application.routes.draw do
   end
 
   resources :resources, only: [:new, :create, :show, :index] do
-    resources :feedbacks, only: [:new, :create]
+    resources :feedbacks, only: [:new, :create, :destroy]
     resources :comments, only: [:create]
   end
 
   resources :curriculums, only: [:new, :create, :index, :show] do
-    resources :feedbacks, only: [:new, :create]
     resources :comments, only: [:create]
     get 'upcoming', to: 'curriculum_upcoming#index'
     get 'progress', to: 'curriculum_progress#index'
