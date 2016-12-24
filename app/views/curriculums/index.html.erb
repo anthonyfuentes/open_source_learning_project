@@ -1,15 +1,25 @@
 
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
+
     <div class="btn-group" role="group">
       <%= link_to 'Resources', resources_path,
         class: 'btn btn-default' %>
       <%= link_to 'Curriculums', curriculums_path,
         class: 'btn btn-default active' %>
+      <%= link_to 'Share Resource', new_resource_path,
+        class: 'btn btn-default' %>
     </div>
-  <hr>
-  <%= will_paginate @curriculums %>
-  <%= render @curriculums %>
-  <%= will_paginate @curriculums %>
+
+    <hr>
+
+    <% if !@curriculums.empty? %>
+      <%= will_paginate @curriculums %>
+      <%= render @curriculums %>
+      <%= will_paginate @curriculums %>
+    <% else %>
+      <h3 class="text-muted">Be the first to create a curriculum!</h3>
+    <% end %>
+
   </div>
 </div>

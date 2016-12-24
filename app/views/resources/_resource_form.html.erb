@@ -1,5 +1,6 @@
 
-<%= simple_form_for(@resource, wrapper: :vertical_form) do |resource_fields| %>
+<%= simple_form_for(@resource, html: { class: 'form-pad-bottom'
+                    }, wrapper: :vertical_form) do |resource_fields| %>
 
   <%= resource_fields.input :title %>
 
