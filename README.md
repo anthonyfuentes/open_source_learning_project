@@ -1,8 +1,8 @@
 # Open Source Learning Project
 
-Share learning resources and build curricula!  
+Share learning resources and build curricula!
 
-[Deployed App](https://peaceful-waters-19907.herokuapp.com/)
+[Deployed App](https://whispering-atoll-54342.herokuapp.com/resources)
 
 ## Using OSLP
 
