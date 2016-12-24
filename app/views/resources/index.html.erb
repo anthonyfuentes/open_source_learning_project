@@ -1,12 +1,13 @@
 
-<% if curriculum = Curriculum.find_by(id: session[:curriculum_id]) %>
+<% if curriculum = Curriculum.find_by(id: cookies.signed[:curriculum_id]) %>
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
       <h2 class="inline-headers">Editing <%= curriculum.title %>...</h2>
       <% if curriculum %>
-      <%= link_to "Finish Creating #{curriculum.title}",
-      curriculum_path(session[:curriculum_id]),
-      class: 'btn btn-success btn' %>
+      <%= link_to "Finish Adding Resources",
+        edit_user_curriculum_path(current_user.id,
+                                  cookies.signed[:curriculum_id]),
+        class: 'btn btn-success btn' %>
       <% end %>
     </div>
   </div>

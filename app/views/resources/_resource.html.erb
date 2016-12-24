@@ -27,15 +27,13 @@
         </div>
 
         <!-- params[:id] == curriculum id on curriculum edit page -->
-        <% if curriculum_id = (session[:curriculum_id] || (params[:user_id] && @curriculum)) %>
+        <% if curriculum_id = (cookies.signed[:curriculum_id] || (@curriculum.id if @curriculum)) %>
           <%= curriculum_resource_toggle_link(curriculum_id, resource.id) %>
         <% elsif @curriculum && current_user %>
           <%= mark_complete_button( resource ) %>
         <% end %>
 
-
         <%= resource_url(resource) %>
-
       </div>
 
     </div>

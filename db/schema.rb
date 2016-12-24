@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 20161223040052) do
   end
 
   create_table "curriculums_resources", force: :cascade do |t|
-    t.integer  "curriculum_id", null: false
-    t.integer  "resource_id",   null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "order"
+    t.integer  "curriculum_id",             null: false
+    t.integer  "resource_id",               null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "order",         default: 0
     t.index ["curriculum_id", "resource_id"], name: "index_curriculums_resources_on_curriculum_id_and_resource_id", unique: true, using: :btree
     t.index ["resource_id", "curriculum_id"], name: "index_curriculums_resources_on_resource_id_and_curriculum_id", using: :btree
   end

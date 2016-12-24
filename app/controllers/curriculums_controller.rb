@@ -13,7 +13,7 @@ class CurriculumsController < ApplicationController
   end
 
   def show
-    session[:curriculum_id] = nil
+    cookies.signed[:curriculum_id] = nil
     @resources = @curriculum.resources.sort_by do |resource|
       resource.curriculums_resources
         .where(curriculum_id: @curriculum.id)
@@ -40,10 +40,11 @@ class CurriculumsController < ApplicationController
   end
 
   def edit
-    session[:curriculum_id] = nil
+    cookies.signed[:curriculum_id] = nil
     @curriculum = Curriculum.find_by(id: params[:id],
                                     creator_id: current_user.id)
-    @resources = @curriculum.resources.paginate(page: params[:page], per_page: 5)
+    @resources = @curriculum.resources.paginate(page: params[:page],
+                                                per_page: 5)
   end
 
   def update
@@ -63,7 +64,7 @@ class CurriculumsController < ApplicationController
   private
 
   def successful_create
-    session[:curriculum_id] = @curriculum.id
+    cookies.signed[:curriculum_id] = @curriculum.id
     redirect_to resources_path
   end
 

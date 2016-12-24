@@ -5,7 +5,7 @@ class FeedbacksController < ApplicationController
   def new
     # TODO: make abstract to apply to curriculumns as well
     @feedback = @resource.feedbacks.build
-    session[:referrer] = request.referrer
+    cookies.signed[:referrer] = request.referrer
   end
 
   def create
@@ -24,9 +24,9 @@ class FeedbacksController < ApplicationController
     end
 
     def redirect_after_create
-      if session[:referrer].include?('curriculums')
-        redirect_to session[:referrer]
-        session[:referrer] = nil
+      if cookies.signed[:referrer].include?('curriculums')
+        redirect_to cookies.signed[:referrer]
+        cookies.signed[:referrer] = nil
       else
         redirect_to user_shared_path(current_user)
       end

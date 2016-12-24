@@ -25,22 +25,23 @@ class Resource < ApplicationRecord
 
   accepts_nested_attributes_for :links, reject_if: :all_blank
 
+  def curriculum_order(curriculum_id)
+    cr = curriculums_resources.find_by(resource_id: id,
+                               curriculum_id: curriculum_id)
+    cr.order
+  end
+
   def url
     links.first.url unless links.empty?
   end
 
-  scope :without_feedback,
-  ->(user) do left_outer_joins(:feedbacks)
-    .where.not(feedbacks: { user_id: user.id })
+  def user
+    submitter
   end
 
   def self.completed_by( user_id )
     left_outer_joins(:feedbacks)
     .where(feedbacks: { user_id: user_id })
-  end
-
-  def user
-    submitter
   end
 
 end

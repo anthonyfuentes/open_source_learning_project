@@ -5,7 +5,8 @@ module ResourcesHelper
     unless resource.links.empty?
       link_to("link", resource.links.first.url)
     else
-      "No links for this resource"
+      # TODO make this a link for users to add link to resource
+      "Can you link this?"
     end
   end
 
@@ -19,7 +20,8 @@ module ResourcesHelper
         resource.url,
         class: "btn btn-primary pull-right"
     else
-      "No link found for this resource."
+      # TODO make this a link for users to add link to resource
+      "Can you link this?"
     end
   end
 
