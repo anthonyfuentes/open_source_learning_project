@@ -1,16 +1,19 @@
-<div class="row">
-  <div class="col-sm-10 col-sm-offset-1" style="height: 60px;">
-    <% flash.each do |message_type, messages| %>
-    <ul class="alert alert-<%= message_type %> list-unstyled flash-msg">
-      <% if messages.is_a?(Array) %>
-      <% messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-      <% else %>
-      <li><%= messages %></li>
-      <% end %>
-    </ul>
-    <% end %>
 
+<% if !flash.empty? %>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1" style="height: 60px;">
+      <% flash.each do |message_type, messages| %>
+        <ul class="alert alert-<%= message_type %> list-unstyled flash-msg">
+          <% if messages.is_a?(Array) %>
+            <% messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          <% else %>
+            <li><%= messages %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+    </div>
   </div>
-</div>
+<% end %>
