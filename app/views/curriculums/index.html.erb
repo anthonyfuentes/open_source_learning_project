@@ -1,4 +1,6 @@
 
+<%= render 'shared/editing_header' %>
+
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
 
@@ -8,6 +10,8 @@
       <%= link_to 'Curriculums', curriculums_path,
         class: 'btn btn-default active' %>
       <%= link_to 'Share Resource', new_resource_path,
+        class: 'btn btn-default' %>
+      <%= link_to 'Create Curriculum', new_curriculum_path,
         class: 'btn btn-default' %>
     </div>
 
