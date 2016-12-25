@@ -1,0 +1,38 @@
+
+<%= simple_form_for [@resource, @feedback], html: {class: 'form-horizontal'} do |f| %>
+
+  <div class="form-group">
+    <%= f.label "How challenging did you find this resource?",
+      class: 'col-sm-5 control-label text-left' %>
+
+    <div class="col-sm-7">
+      <%= f.collection_radio_buttons :difficulty, (1..10).map{|n| [n, n]}, :first, :last do |b|
+                                  b.label(class: "radio-inline"){ b.radio_button + b.label }
+                                end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "How useful did you find this resource?",
+      class: 'col-sm-5 control-label' %>
+    <div class="col-sm-7">
+      <%= f.collection_radio_buttons :rating, (1..10).map{|n| [n, n]}, :first, :last do |b|
+                                  b.label(class: "radio-inline"){ b.radio_button + b.label }
+                                end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "How long does it take to complete? (minutes)",
+      class: 'col-sm-5 control-label' %>
+    <div class="col-sm-7">
+      <%= f.number_field :completion_minutes, min: 1, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="pull-right">
+    <%= f.submit  class: 'btn btn-success' %>
+    <%= link_to "Skip", user_shared_path(current_user), class: "btn btn-primary" %>
+  </div>
+
+<% end %>

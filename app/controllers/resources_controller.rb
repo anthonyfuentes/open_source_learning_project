@@ -5,10 +5,12 @@ class ResourcesController < ApplicationController
   def new
     @resource = Resource.new
     @resource.links.build
+    @resource.feedbacks.build
   end
 
   def create
     @resource = current_user.submitted_resources.build(resource_params)
+    @resource.feedbacks.first.user = current_user
     @resource.save ? successful_create : failed_create
   end
 
@@ -40,7 +42,7 @@ class ResourcesController < ApplicationController
   private
 
     def successful_create
-      redirect_to new_resource_feedback_path @resource
+      redirect_to resources_path
     end
 
     def failed_create
@@ -55,7 +57,9 @@ class ResourcesController < ApplicationController
         :media_type,
         :credits,
         :category_id,
-        links_attributes: [:url])
+        links_attributes: [:url],
+        feedbacks_attributes: [:completion_minutes,
+                               :rating, :difficulty])
     end
 
     def query_params

@@ -8,6 +8,7 @@ class FeedbacksController < ApplicationController
   end
 
   def create
+    raise
     @feedback = @resource.feedbacks.build(resource_params)
     @feedback.user_id = current_user.id
     @feedback.save ? successful_create : failed_create

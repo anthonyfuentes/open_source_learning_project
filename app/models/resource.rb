@@ -14,7 +14,8 @@ class Resource < ApplicationRecord
   has_many :curriculums_resources
   has_many :curriculums, through: :curriculums_resources
 
-  has_many :feedbacks, as: :feedbackable
+  has_many :feedbacks, as: :feedbackable,
+    inverse_of: :feedbackable
 
   has_many :links, inverse_of: :resource, dependent: :destroy
 
@@ -24,6 +25,8 @@ class Resource < ApplicationRecord
   has_many :comments, as: :commentable
 
   accepts_nested_attributes_for :links, reject_if: :all_blank
+  accepts_nested_attributes_for :feedbacks
+  accepts_nested_attributes_for :category, reject_if: :all_blank
 
   def curriculum_order(curriculum_id)
     cr = curriculums_resources.find_by(resource_id: id,

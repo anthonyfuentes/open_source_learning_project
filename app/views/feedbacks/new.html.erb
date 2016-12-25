@@ -1,12 +1,13 @@
 
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
-    <h1 class="text-center">Tell us about this resource...</h1>
+    <h1 class="text-center">Tell us about <%= feedbackable_link(@feedback.feedbackable) %></h1>
   </div>
 </div>
 <br><br>
 <div class="row">
   <div class="col-xs-8 col-xs-offset-2">
-    <%= render 'feedback_form' %>
+    <%= render 'feedback_form_new' %>
   </div>
 </div>
+

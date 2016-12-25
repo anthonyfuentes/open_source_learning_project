@@ -1,23 +1,26 @@
 
 <%= simple_form_for(@resource, html: { class: 'form-pad-bottom'
-                    }, wrapper: :vertical_form) do |resource_fields| %>
+                    }, wrapper: :vertical_form) do |f| %>
 
-  <%= resource_fields.input :title %>
+  <%= f.input :title %>
 
-  <%= resource_fields.input :subtitle %>
+  <%= f.input :subtitle %>
 
-  <%= resource_fields.input :description %>
+  <%= f.input :description %>
 
-  <%= render 'links/link_form', f: resource_fields %>
+  <%= render 'links/link_form', f: f %>
 
-  <%= resource_fields.input :media_type,
+  <%= f.input :media_type,
   collection: Resource.media_types.keys.map(&:humanize),
   value_method: :downcase, as: :select %>
 
-  <%= resource_fields.input :credits %>
+  <%= f.input :credits %>
 
-  <%= resource_fields.association :category %>
+  <%= f.association :category %>
 
-  <%= resource_fields.submit 'Share', class: "btn btn-success" %>
+  <!-- TODO: debug - not creating feedback -->
+  <%= render 'feedbacks/feedback_form_nested', f: f %>
+
+  <%= f.submit 'Share', class: "btn btn-success" %>
 
 <% end %>
