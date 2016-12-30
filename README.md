@@ -20,9 +20,9 @@ Share learning resources and build curricula!
 1. Fork this repo
 2. Clone the fork to your machine
 3. Bundle install all gems `$ bundle install`
-4. Install Elasticsearch 
-  *[Ubuntu 14.04 instructions](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-14-04)
-  *[Ubuntu 16.04 instructions](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04)
+4. Install Elasticsearch
+  * [Ubuntu 14.04 instructions](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-14-04)
+  * [Ubuntu 16.04 instructions](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04)
 5. Setup database
   1. `$ rails db:create`
   2. `$ rails db:migrate`
