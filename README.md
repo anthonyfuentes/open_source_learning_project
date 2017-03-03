@@ -4,6 +4,8 @@ Share learning resources and build curricula!
 
 [https://opensourcelearning.herokuapp.com/](https://opensourcelearning.herokuapp.com/)
 
+![screenshot of the open source learning project home page](https://github.com/anthonyfuentes/open_source_learning_project/blob/master/oslp.png)
+
 ## Using OSLP
 1. Sign up for an account
 2. Share learning resources that you've found helpful
